@@ -4,13 +4,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "rog-lib",
+      "rog",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "rog-lib",
+      "rog",
       "kebab-case"
     ]
   }

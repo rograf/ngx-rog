@@ -1,2 +1,8 @@
-<h1>Hello World!</h1>
-<rog-lib></rog-lib>
+<h1>Sample tables</h1>
+<rog-table [headers]="headers" [rows]="rows" (page)="onChangePage($event)">
+
+  <ng-template rogTemplate="age" let-value="value" let-row="row">
+    -
+  </ng-template>
+
+</rog-table>

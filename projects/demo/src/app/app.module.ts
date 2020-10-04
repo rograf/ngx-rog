@@ -1,4 +1,5 @@
-import { RogLibModule } from './../../../rog-lib/src/lib/rog-lib.module';
+import { RogModule } from './../../../rog-lib/src/lib/_core/core.module';
+import { RogTableModule } from './../../../rog-lib/src/lib/table/table.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -10,7 +11,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    RogLibModule
+    RogModule,
+    RogTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
