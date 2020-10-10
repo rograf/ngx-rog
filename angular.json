@@ -68,6 +68,7 @@
               "projects/demo/src/assets"
             ],
             "styles": [
+              "projects/demo/src/bootstrap.min.css",
               "projects/demo/src/styles.scss"
             ],
             "scripts": []
@@ -132,6 +133,7 @@
               "projects/demo/src/assets"
             ],
             "styles": [
+              "projects/demo/src/bootstrap.min.css",
               "projects/demo/src/styles.scss"
             ],
             "scripts": []
