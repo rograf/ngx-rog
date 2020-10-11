@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RogTemplateDirective } from './rog-template.directive';
+import { RogSortByPipe } from './rog-sort-by.pipe';
 
+const PIPES = [
+  RogSortByPipe,
+  RogTemplateDirective,
+]
 
 
 @NgModule({
-  declarations: [RogTemplateDirective],
+  declarations: [...PIPES],
   imports: [
     CommonModule,
   ],
-  exports: [RogTemplateDirective]
+  exports: [...PIPES]
 })
 export class RogModule { }

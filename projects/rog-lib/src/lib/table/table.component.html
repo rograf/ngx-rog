@@ -1,51 +1,60 @@
-<table class="table table-responsive d-md-table">
+<table class="r-table">
   <thead>
     <tr>
       <th scope="col" *ngFor="let header of headers">
-        <button *ngIf="header.sorting; else noSortingHeader" (click)="setSorting(header.key)">
-          <small>
-            {{header.displayName}}
-          </small>
+        <button
+          *ngIf="header.sorting; else noSortingHeader"
+          class="r-table__header"
+          [ngClass]="getColumnClass(header.key)"
+          (click)="setSorting(header.key)"
+        >
+          {{ header.displayName }}
         </button>
         <ng-template #noSortingHeader>
-          <div class="column-header text-capitalize">
-            <small>
-              {{header.displayName}}
-            </small>
+          <div class="r-table__header">
+            {{ header.displayName }}
           </div>
         </ng-template>
       </th>
-      <th style="width: 50px;" *ngIf="tableActionsTemplate"></th>
+      <th *ngIf="tableActionsTemplate"></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let row of rows;">
+    <tr *ngFor="let row of rows | rogSortBy: sortedColumn">
       <td *ngFor="let header of headers">
-
         <ng-template #defaultRow>
           <ng-container [ngSwitch]="header.type">
             <ng-container *ngSwitchCase="">
-              {{getDescendantProp(row, header.key)}}
+              {{ getDescendantProp(row, header.key) }}
             </ng-container>
             <ng-container *ngSwitchCase="'date'">
-              {{getDescendantProp(row, header.key) | date: 'short'}}
+              {{ getDescendantProp(row, header.key) | date: "short" }}
             </ng-container>
             <ng-container *ngSwitchDefault>
-              {{getDescendantProp(row, header.key)}}
+              {{ getDescendantProp(row, header.key) }}
             </ng-container>
           </ng-container>
         </ng-template>
 
-        <ng-container *ngTemplateOutlet="customTemplate[header.key]? customTemplate[header.key] : defaultRow; context: {
-          value: getDescendantProp(row, header.key),
-          header: header,
-          row: row
-        }">
+        <ng-container
+          *ngTemplateOutlet="
+            customTemplate[header.key]
+              ? customTemplate[header.key]
+              : defaultRow;
+            context: {
+              value: getDescendantProp(row, header.key),
+              header: header,
+              row: row
+            }
+          "
+        >
         </ng-container>
       </td>
-      <td *ngIf="tableActionsTemplate" class="text-right border-left">
-        <div class="d-inline-flex align-items-center">
-          <ng-container *ngTemplateOutlet="tableActionsTemplate; context: {row: row}"></ng-container>
+      <td *ngIf="tableActionsTemplate">
+        <div>
+          <ng-container
+            *ngTemplateOutlet="tableActionsTemplate; context: { row: row }"
+          ></ng-container>
         </div>
       </td>
     </tr>
