@@ -1,3 +1,4 @@
+import { PaginatorModule } from './../paginator/paginator.module';
 import { RogModule } from './../_core/core.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -9,6 +10,7 @@ import { RogTableComponent } from './table.component';
   declarations: [RogTableComponent],
   imports: [
     CommonModule,
+    PaginatorModule,
     RogModule
   ],
   exports: [RogTableComponent]

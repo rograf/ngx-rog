@@ -20,7 +20,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let row of rows | rogSortBy: sortedColumn">
+    <tr *ngFor="let row of rows | rogSortBy: sortedColumn | slice: paginator.startIndex:paginator.endIndex">
       <td *ngFor="let header of headers">
         <ng-template #defaultRow>
           <ng-container [ngSwitch]="header.type">
@@ -60,3 +60,5 @@
     </tr>
   </tbody>
 </table>
+
+<rog-paginator #paginator [length]="options.length || rows.length" [pageSize]="options.pageSize" (page)="onChangePage($event)"></rog-paginator>

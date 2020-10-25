@@ -3,6 +3,12 @@ import { SYMBOL_TO_REVERSE } from './../_core/variables';
 import { RogTemplateDirective } from './../_core/rog-template.directive';
 import { Component, ContentChildren, EventEmitter, Input, OnInit, Output, QueryList } from '@angular/core';
 
+export class TableOptions {
+  paginator = true;
+  pageSize = 10;
+  length = 0;
+}
+
 @Component({
   selector: 'rog-table',
   templateUrl: './table.component.html',
@@ -11,10 +17,10 @@ import { Component, ContentChildren, EventEmitter, Input, OnInit, Output, QueryL
 export class RogTableComponent implements OnInit {
 
   private _rows: any[] = [];
-  sortedColumn: string = null;
+  private _options = new TableOptions();
 
-  customTemplate: any = {};
-  tableActionsTemplate;
+  @Output() page = new EventEmitter();
+  @Input() headers: any[] = [];
 
   @Input() set rows (value){
     this._rows = value;
@@ -23,11 +29,18 @@ export class RogTableComponent implements OnInit {
     return this._rows;
   }
 
-  @Input() headers: any[] = [];
-  @Output() page = new EventEmitter();
+  @Input() set options (value){
+    this._options = {...this.options, ...value};
+  }
+  get options(){
+    return this._options;
+  }
+
+  sortedColumn: string = null;
+  customTemplate: any = {};
+  tableActionsTemplate: any;
 
   @ContentChildren(RogTemplateDirective) tableCellTemplate: QueryList<RogTemplateDirective>;
-
 
   constructor() { }
 
@@ -62,6 +75,9 @@ export class RogTableComponent implements OnInit {
       className = className + '-desc';
     }
     return className
+  }
+
+  onChangePage(event){
   }
   
 }
