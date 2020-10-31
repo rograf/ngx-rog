@@ -1,3 +1,5 @@
+<rog-search #search></rog-search>
+
 <table class="r-table">
   <thead>
     <tr>
@@ -20,7 +22,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let row of rows | rogSortBy: sortedColumn | slice: paginator.startIndex:paginator.endIndex">
+    <tr *ngFor="let row of rows | rogFilter: search.queryDebounce | rogSortBy: sortedColumn | slice: paginator.startIndex:paginator.endIndex">
       <td *ngFor="let header of headers">
         <ng-template #defaultRow>
           <ng-container [ngSwitch]="header.type">
