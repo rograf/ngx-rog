@@ -54,8 +54,8 @@ export class RogFilterPipe implements PipeTransform {
               .includes(searchText)
           ) {
             filteredItems.push(item);
+            break;
           }
-          return false;
         }
       }
     });
