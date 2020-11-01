@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RogTableComponent } from './table.component';
 import { SearchModule } from '../search/search.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -14,6 +15,7 @@ import { SearchModule } from '../search/search.module';
     CommonModule,
     PaginatorModule,
     SearchModule,
+    RouterModule.forRoot([]),
     RogModule
   ],
   exports: [RogTableComponent]

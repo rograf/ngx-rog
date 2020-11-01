@@ -1,4 +1,4 @@
-<rog-search #search></rog-search>
+<rog-search #search (search)="onChangeSearch($event)"></rog-search>
 
 <table class="r-table">
   <thead>
@@ -8,7 +8,7 @@
           *ngIf="header.sorting; else noSortingHeader"
           class="r-table__header"
           [ngClass]="getColumnClass(header.key)"
-          (click)="setSorting(header.key)"
+          (click)="onChangeSorting(header.key)"
         >
           {{ header.displayName }}
         </button>
@@ -22,7 +22,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let row of rows | rogFilter: search.queryDebounce | rogSortBy: sortedColumn | slice: paginator.startIndex:paginator.endIndex">
+    <tr *ngFor="let row of displayRows | slice: paginator.startIndex:paginator.endIndex">
       <td *ngFor="let header of headers">
         <ng-template #defaultRow>
           <ng-container [ngSwitch]="header.type">
@@ -63,4 +63,4 @@
   </tbody>
 </table>
 
-<rog-paginator #paginator [length]="options.length || rows.length" [pageSize]="options.pageSize" (page)="onChangePage($event)"></rog-paginator>
+<rog-paginator #paginator [length]="options.length || displayRows.length" [pageSize]="options.pageSize" (page)="onChangePage($event)"></rog-paginator>

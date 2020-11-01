@@ -22,6 +22,7 @@ const DIRECTIVES = [
   imports: [
     CommonModule,
   ],
+  providers: [...PIPES],
   exports: [...PIPES, ...DIRECTIVES]
 })
 export class RogModule { }
