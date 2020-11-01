@@ -4,8 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'rogFilter',
 })
 export class RogFilterPipe implements PipeTransform {
-
-  transform(items: any[], searchText: string, filters: string[]): any[] {
+  transform(items: any[], searchText: string, filters?: string[]): any[] {
     if (!items) {
       return [];
     }
@@ -17,39 +16,47 @@ export class RogFilterPipe implements PipeTransform {
 
     const filteredItems = [];
 
-    const getKeys = (arr, obj, prefix?)=> {
-      for(var key in obj) {
-        if(typeof obj[key] === 'string'){
-          if(prefix){
+    const getKeys = (arr, obj, prefix?) => {
+      for (var key in obj) {
+        if (typeof obj[key] === 'string') {
+          if (prefix) {
             arr.push(prefix + '.' + key);
           } else {
             arr.push(key);
           }
-        } else if(typeof obj[key] === 'object'){
-          getKeys(arr, obj[key], key)
+        } else if (typeof obj[key] === 'object') {
+          getKeys(arr, obj[key], key);
         }
       }
-    }
+    };
 
     items.forEach((item) => {
-      if(typeof item === 'string'){
-        if (item !== null && typeof item === 'string' && item.toLowerCase().includes(searchText)) {
+      if (typeof item === 'string') {
+        if (
+          item !== null &&
+          typeof item === 'string' &&
+          item.toLowerCase().includes(searchText)
+        ) {
           filteredItems.push(item);
         }
       } else {
-        if(!filters){
-          filters = []
-          getKeys(filters, item)
+        if (!filters) {
+          filters = [];
+          getKeys(filters, item);
         }
-        filters.forEach((filter) => {
-          if(filter.includes(".")){
-            if (getDescendantProp(item, filter) !== null && typeof getDescendantProp(item, filter) === 'string' && getDescendantProp(item, filter).toLowerCase().includes(searchText)){
-              filteredItems.push(item);
-            }
-          } else if (item[filter] !== null && typeof item[filter] === 'string' && item[filter].toLowerCase().includes(searchText)) {
+
+        for (let i = 0, l = filters.length; i < l; i++) {
+          if (
+            getDescendantProp(item, filters[i]) !== null &&
+            typeof getDescendantProp(item, filters[i]) === 'string' &&
+            getDescendantProp(item, filters[i])
+              .toLowerCase()
+              .includes(searchText)
+          ) {
             filteredItems.push(item);
           }
-        });
+          return false;
+        }
       }
     });
     return filteredItems;
