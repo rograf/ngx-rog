@@ -1,66 +1,66 @@
 <rog-search #search (search)="onChangeSearch($event)"></rog-search>
 
-<table class="r-table">
-  <thead>
-    <tr>
-      <th scope="col" *ngFor="let header of headers">
-        <button
-          *ngIf="header.sorting; else noSortingHeader"
-          class="r-table__header"
-          [ngClass]="getColumnClass(header.key)"
-          (click)="onChangeSorting(header.key)"
-        >
-          {{ header.displayName }}
-        </button>
-        <ng-template #noSortingHeader>
-          <div class="r-table__header">
+<div [ngStyle]="options.height?{'height': options.height, 'overflow': 'auto'} : ''">
+  <table class="r-table">
+    <thead>
+      <tr>
+        <th scope="col" *ngFor="let header of headers" class="r-table__header">
+          <button
+            *ngIf="header.sorting; else noSortingHeader"
+            class="r-table__header-btn"
+            [ngClass]="getColumnClass(header.key)"
+            (click)="onChangeSorting(header.key)"
+          >
             {{ header.displayName }}
-          </div>
-        </ng-template>
-      </th>
-      <th *ngIf="tableActionsTemplate"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let row of displayRows | slice: paginator.startIndex:paginator.endIndex">
-      <td *ngFor="let header of headers">
-        <ng-template #defaultRow>
-          <ng-container [ngSwitch]="header.type">
-            <ng-container *ngSwitchCase="">
-              {{ getDescendantProp(row, header.key) }}
+          </button>
+          <ng-template #noSortingHeader>
+            {{ header.displayName }}
+          </ng-template>
+        </th>
+        <th *ngIf="tableActionsTemplate"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of displayRows | slice: paginator.startIndex:paginator.endIndex">
+        <td *ngFor="let header of headers">
+          <ng-template #defaultRow>
+            <ng-container [ngSwitch]="header.type">
+              <ng-container *ngSwitchCase="">
+                {{ getDescendantProp(row, header.key) }}
+              </ng-container>
+              <ng-container *ngSwitchCase="'date'">
+                {{ getDescendantProp(row, header.key) | date: "short" }}
+              </ng-container>
+              <ng-container *ngSwitchDefault>
+                {{ getDescendantProp(row, header.key) }}
+              </ng-container>
             </ng-container>
-            <ng-container *ngSwitchCase="'date'">
-              {{ getDescendantProp(row, header.key) | date: "short" }}
-            </ng-container>
-            <ng-container *ngSwitchDefault>
-              {{ getDescendantProp(row, header.key) }}
-            </ng-container>
-          </ng-container>
-        </ng-template>
-
-        <ng-container
-          *ngTemplateOutlet="
-            customTemplate[header.key]
-              ? customTemplate[header.key]
-              : defaultRow;
-            context: {
-              value: getDescendantProp(row, header.key),
-              header: header,
-              row: row
-            }
-          "
-        >
-        </ng-container>
-      </td>
-      <td *ngIf="tableActionsTemplate">
-        <div>
+          </ng-template>
+  
           <ng-container
-            *ngTemplateOutlet="tableActionsTemplate; context: { row: row }"
-          ></ng-container>
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
+            *ngTemplateOutlet="
+              customTemplate[header.key]
+                ? customTemplate[header.key]
+                : defaultRow;
+              context: {
+                value: getDescendantProp(row, header.key),
+                header: header,
+                row: row
+              }
+            "
+          >
+          </ng-container>
+        </td>
+        <td *ngIf="tableActionsTemplate">
+          <div>
+            <ng-container
+              *ngTemplateOutlet="tableActionsTemplate; context: { row: row }"
+            ></ng-container>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <rog-paginator #paginator [length]="options.length || displayRows.length" [pageSize]="options.pageSize" (page)="onChangePage($event)"></rog-paginator>

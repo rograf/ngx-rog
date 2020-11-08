@@ -13,6 +13,7 @@ export class TableOptions {
   paginator = true;
   pageSize = 10;
   length = 0;
+  height = null;
 }
 
 @Component({
@@ -105,7 +106,7 @@ export class RogTableComponent implements OnInit {
 
 
   getColumnClass(columnName: string){
-    let className = 'r-table__header--sorting';
+    let className = 'r-table__header-btn--sorting';
     if(this.sortedColumn === columnName){
       className = className + '-asc';
     } else if (this.sortedColumn ===  SYMBOL_TO_REVERSE + columnName){
