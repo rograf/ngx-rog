@@ -6,11 +6,15 @@ import { CommonModule } from '@angular/common';
 import { RogTableComponent } from './table.component';
 import { SearchModule } from '../search/search.module';
 import { RouterModule } from '@angular/router';
+import { TableVsComponent } from './table-vs/table-vs.component';
+import { TablePagComponent } from './table-pag/table-pag.component';
+import { ListPagComponent } from './list-pag/list-pag.component';
+import { ListVsComponent } from './list-vs/list-vs.component';
 
 
 
 @NgModule({
-  declarations: [RogTableComponent],
+  declarations: [RogTableComponent, TableVsComponent, TablePagComponent, ListPagComponent, ListVsComponent],
   imports: [
     CommonModule,
     PaginatorModule,
