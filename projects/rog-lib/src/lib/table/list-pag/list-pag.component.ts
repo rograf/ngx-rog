@@ -13,7 +13,6 @@ export class ListPagComponent extends TableBase implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.options)
   }
 
 }

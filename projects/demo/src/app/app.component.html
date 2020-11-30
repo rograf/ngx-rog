@@ -1,5 +1,5 @@
 <h1>Sample tables</h1>
-<rog-table [headers]="headers" [rows]="rows" [options]="{pageSize: 15}" (page)="onChangePage($event)">
+<rog-table [headers]="headers" [rows]="rows" [options]="{pageSize: 15, virtualScroll: true, itemSize: 25, itemSizeVS: '350', height: '600px'}" (page)="onChangePage($event)">
 
   <ng-template rogTemplate="age" let-value="value" let-row="row">
     -

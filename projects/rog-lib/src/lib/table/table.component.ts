@@ -1,3 +1,5 @@
+import { TableVsComponent } from './table-vs/table-vs.component';
+import { ListVsComponent } from './list-vs/list-vs.component';
 import { ListPagComponent } from './list-pag/list-pag.component';
 import { TablePagComponent } from './table-pag/table-pag.component';
 import { PaginatorComponent } from './../paginator/paginator.component';
@@ -29,6 +31,7 @@ export class TableOptions {
   length = 0;
   height = null;
   listBreakPoint = 800;
+  virtualScroll = false;
 }
 
 @Component({
@@ -114,9 +117,17 @@ export class RogTableComponent implements OnInit {
     this.container.clear();
     let factory;
     if (isTable) {
-      factory = this.resolver.resolveComponentFactory(TablePagComponent);
+      if(this.options.virtualScroll){
+        factory = this.resolver.resolveComponentFactory(TableVsComponent);
+      } else {
+        factory = this.resolver.resolveComponentFactory(TablePagComponent);
+      }
     } else {
-      factory = this.resolver.resolveComponentFactory(ListPagComponent);
+      if(this.options.virtualScroll){
+        factory = this.resolver.resolveComponentFactory(ListVsComponent);
+      } else {
+        factory = this.resolver.resolveComponentFactory(ListPagComponent);
+      }
     }
     const componentRef: any = this.container.createComponent(factory);
     componentRef.instance.params = this.params;

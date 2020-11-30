@@ -32,7 +32,7 @@ export class AppComponent {
 
   generateRows() {
     const rows = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 1000; i++) {
       rows.push({
         id: 1,
         name: faker.name.findName(),

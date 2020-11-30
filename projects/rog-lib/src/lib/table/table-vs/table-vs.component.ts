@@ -1,15 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { TablePagComponent } from './../table-pag/table-pag.component';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @Component({
   selector: 'rog-table-vs',
   templateUrl: './table-vs.component.html',
-  styleUrls: ['./table-vs.component.css']
+  styleUrls: ['./table-vs.component.scss'],
 })
-export class TableVsComponent implements OnInit {
+export class TableVsComponent extends TablePagComponent implements OnInit {
+  @ViewChild(CdkVirtualScrollViewport)
+  public viewPort: CdkVirtualScrollViewport;
 
-  constructor() { }
+  headerTop = '0px';
 
-  ngOnInit(): void {
+  public get inverseTranslation(): string {
+    if (!this.viewPort || !this.viewPort['_renderedContentTransform']) {
+      return '0';
+    }
+    this.headerTop = `-${this.viewPort.getOffsetToRenderedContentStart()}px`
+    return '0'
   }
 
+  constructor() {
+    super();
+  }
+
+  ngOnInit(): void {
+    if(!this.options.itemSize){
+      throw '[TABLE] Missed itemSize in options'
+    }
+    if(!this.options.height){
+      throw '[TABLE] Missed height in options'
+    }
+  }
 }

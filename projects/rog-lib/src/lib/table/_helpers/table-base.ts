@@ -28,7 +28,7 @@ export class TableBase {
     } else {
       this.params.sort = column;
     }
-    this.rows = sortBy.transform(this.rows, this.params.sort)
+    this.rows = [...sortBy.transform(this.rows, this.params.sort)]
     this.setQueryParams();
   }
 

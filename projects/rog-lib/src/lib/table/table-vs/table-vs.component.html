@@ -1,1 +1,34 @@
-<p>table-vs works!</p>
+<cdk-virtual-scroll-viewport [itemSize]="options.itemSize" [style.height]="options.height">
+  <table class="r-table">
+    <thead>
+      <tr [style.top]="inverseTranslation">
+        <th scope="col" [style.top]="headerTop" *ngFor="let header of headers" class="r-table__header">
+          <button
+            *ngIf="header.sorting; else noSortingHeader"
+            class="r-table__header-btn"
+            [ngClass]="getColumnClass(header.key)"
+            (click)="onChangeSorting(header.key)"
+          >
+            {{ header.displayName }}
+          </button>
+          <ng-template #noSortingHeader>
+            {{ header.displayName }}
+          </ng-template>
+        </th>
+        <th *ngIf="customTemplate._actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *cdkVirtualFor="let row of rows">
+        <td *ngFor="let header of headers">
+          <rog-cell [template]="customTemplate[header.key]" [header]="header" [row]="row"></rog-cell>
+        </td>
+        <td *ngIf="customTemplate._actions">
+          <ng-container
+            *ngTemplateOutlet="customTemplate._actions; context: { row: row }"
+          ></ng-container>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</cdk-virtual-scroll-viewport>

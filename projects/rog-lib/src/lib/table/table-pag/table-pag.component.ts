@@ -15,7 +15,6 @@ export class TablePagComponent extends TableBase implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.options)
   }
 
   getColumnClass(columnName: string){

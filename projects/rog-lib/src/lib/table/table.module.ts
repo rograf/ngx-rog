@@ -11,7 +11,7 @@ import { TablePagComponent } from './table-pag/table-pag.component';
 import { ListPagComponent } from './list-pag/list-pag.component';
 import { ListVsComponent } from './list-vs/list-vs.component';
 import { CellComponent } from './_cell/cell.component';
-
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
 @NgModule({
@@ -20,6 +20,7 @@ import { CellComponent } from './_cell/cell.component';
     CommonModule,
     PaginatorModule,
     SearchModule,
+    ScrollingModule,
     RouterModule.forRoot([]),
     RogModule
   ],
