@@ -10,11 +10,12 @@ import { TableVsComponent } from './table-vs/table-vs.component';
 import { TablePagComponent } from './table-pag/table-pag.component';
 import { ListPagComponent } from './list-pag/list-pag.component';
 import { ListVsComponent } from './list-vs/list-vs.component';
+import { CellComponent } from './_cell/cell.component';
 
 
 
 @NgModule({
-  declarations: [RogTableComponent, TableVsComponent, TablePagComponent, ListPagComponent, ListVsComponent],
+  declarations: [RogTableComponent, TableVsComponent, TablePagComponent, ListPagComponent, ListVsComponent, CellComponent],
   imports: [
     CommonModule,
     PaginatorModule,

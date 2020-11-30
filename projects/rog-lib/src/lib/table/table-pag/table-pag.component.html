@@ -15,51 +15,22 @@
             {{ header.displayName }}
           </ng-template>
         </th>
-        <th *ngIf="actionsTemplate"></th>
+        <th *ngIf="customTemplate._actions"></th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let row of rows | slice: paginator.startIndex:paginator.endIndex">
         <td *ngFor="let header of headers">
-          <ng-template #defaultRow>
-            <ng-container [ngSwitch]="header.type">
-              <ng-container *ngSwitchCase="">
-                {{ getDescendantProp(row, header.key) }}
-              </ng-container>
-              <ng-container *ngSwitchCase="'date'">
-                {{ getDescendantProp(row, header.key) | date: "short" }}
-              </ng-container>
-              <ng-container *ngSwitchDefault>
-                {{ getDescendantProp(row, header.key) }}
-              </ng-container>
-            </ng-container>
-          </ng-template>
-  
-          <ng-container
-            *ngTemplateOutlet="
-              customTemplate[header.key]
-                ? customTemplate[header.key]
-                : defaultRow;
-              context: {
-                value: getDescendantProp(row, header.key),
-                header: header,
-                row: row
-              }
-            "
-          >
-          </ng-container>
+          <rog-cell [template]="customTemplate[header.key]" [header]="header" [row]="row"></rog-cell>
         </td>
-        <td *ngIf="actionsTemplate">
-          <div>
-            <ng-container
-              *ngTemplateOutlet="actionsTemplate; context: { row: row }"
-            ></ng-container>
-          </div>
+        <td *ngIf="customTemplate._actions">
+          <ng-container
+            *ngTemplateOutlet="customTemplate._actions; context: { row: row }"
+          ></ng-container>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
-
 
 <rog-paginator #paginator [length]="options.length || rows.length" [pageSize]="options.pageSize" (page)="onChangePage($event)"></rog-paginator>

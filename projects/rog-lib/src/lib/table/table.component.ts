@@ -71,7 +71,6 @@ export class RogTableComponent implements OnInit {
 
   displayRows = [];
   customTemplate: any = {};
-  actionsTemplate: any;
 
   @ContentChildren(RogTemplateDirective)
   tableCellTemplate: QueryList<RogTemplateDirective>;
@@ -108,6 +107,8 @@ export class RogTableComponent implements OnInit {
   createTable() {
     const isTable = window.innerWidth > this._options.listBreakPoint;
     if(isTable && this.container.element?.nativeElement?.nextSibling?.tagName?.includes('TABLE')){
+      return false;
+    } else if(!isTable && this.container.element?.nativeElement?.nextSibling?.tagName?.includes('LIST')){
       return false;
     }
     this.container.clear();

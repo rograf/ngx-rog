@@ -1,0 +1,27 @@
+<ng-template #defaultRow>
+  <ng-container [ngSwitch]="header.type">
+    <ng-container *ngSwitchCase="">
+      {{ getDescendantProp(row, header.key) }}
+    </ng-container>
+    <ng-container *ngSwitchCase="'date'">
+      {{ getDescendantProp(row, header.key) | date: "short" }}
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+      {{ getDescendantProp(row, header.key) }}
+    </ng-container>
+  </ng-container>
+</ng-template>
+
+<ng-container
+  *ngTemplateOutlet="
+    template
+      ? template
+      : defaultRow;
+    context: {
+      value: getDescendantProp(row, header.key),
+      header: header,
+      row: row
+    }
+  "
+>
+</ng-container>

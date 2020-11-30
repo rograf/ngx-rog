@@ -9,8 +9,8 @@ import * as faker from 'faker';
 export class AppComponent {
   headers = [
     { key: 'name', displayName: 'name', sorting: true },
-    { key: 'address.city', displayName: 'city', sorting: true },
-    { key: 'address.country', displayName: 'country', sorting: true },
+    { key: 'address.city', displayName: 'city', sorting: true, widthList: 'calc(100% - 100px)' },
+    { key: 'address.country', displayName: 'country', sorting: true, widthList: '100px' },
     { key: 'roles', displayName: 'roles', type: 'array' },
     { key: 'lastLogin', displayName: 'birthday', sorting: true, type: 'date' },
     {

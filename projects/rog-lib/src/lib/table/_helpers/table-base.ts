@@ -18,6 +18,7 @@ export class TableBase {
   actionsTemplate;
 
   onChangePage(event){
+    console.log(event)
     this.setQueryParams();
   }
 

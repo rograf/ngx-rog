@@ -5,4 +5,8 @@
     -
   </ng-template>
 
+  <ng-template rogTemplate="_actions" let-row="row">
+    <button (click)="row.verified = !row.verified">Verify</button>
+  </ng-template>
+
 </rog-table>

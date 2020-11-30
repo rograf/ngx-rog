@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'rog-list-pag',
   templateUrl: './list-pag.component.html',
-  styleUrls: ['./list-pag.component.css']
+  styleUrls: ['./list-pag.component.scss']
 })
 export class ListPagComponent extends TableBase implements OnInit {
 
@@ -13,6 +13,7 @@ export class ListPagComponent extends TableBase implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.options)
   }
 
 }
