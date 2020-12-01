@@ -41,7 +41,7 @@ export class PaginatorComponent implements OnInit {
     return this._pageSize;
   }
 
-  currentPage = 1
+  @Input() currentPage = 1
   totalPages = 1
   startIndex = 0
   endIndex = 0

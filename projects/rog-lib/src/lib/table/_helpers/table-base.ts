@@ -6,6 +6,14 @@ const sortBy: RogSortByPipe = new RogSortByPipe();
 
 export class TableBase {
 
+  constructor(){
+    setTimeout(()=>{
+      if(this.params.sort && !this.options.length){
+        this.rows = [...sortBy.transform(this.rows, this.params.sort)]
+      }
+    })
+  }
+
   getDescendantProp = getDescendantProp;
 
   setQueryParams
@@ -27,7 +35,7 @@ export class TableBase {
     } else {
       this.params.sort = column;
     }
-    if(!!this.options.length){
+    if(!this.options.length){
       this.rows = [...sortBy.transform(this.rows, this.params.sort)]
     }
     this.setQueryParams();
