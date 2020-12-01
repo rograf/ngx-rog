@@ -1,7 +1,7 @@
-<cdk-virtual-scroll-viewport [itemSize]="options.itemSize" [style.height]="options.height">
+<cdk-virtual-scroll-viewport [itemSize]="options.itemSize" [style.height]="options.height" (scrolledIndexChange)="scroll($event)">
   <table class="r-table">
     <thead>
-      <tr [style.top]="inverseTranslation">
+      <tr>
         <th scope="col" [style.top]="headerTop" *ngFor="let header of headers" class="r-table__header">
           <button
             *ngIf="header.sorting; else noSortingHeader"

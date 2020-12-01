@@ -71,16 +71,12 @@ export class PaginatorComponent implements OnInit {
   nexPage(){
     if(this.currentPage < this.totalPages){
       this.currentPage = this.currentPage + 1;
-      this.calculateIndex();
-      this.emitPage();
     }
   }
 
   prevPage(){
     if(this.currentPage > 1){
       this.currentPage = this.currentPage - 1;
-      this.calculateIndex();
-      this.emitPage();
     }
   }
 

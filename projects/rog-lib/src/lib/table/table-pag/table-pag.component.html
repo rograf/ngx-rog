@@ -19,7 +19,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let row of rows | slice: paginator.startIndex:paginator.endIndex">
+      <tr *ngFor="let row of options.length?rows : rows | slice: paginator.startIndex:paginator.endIndex">
         <td *ngFor="let header of headers">
           <rog-cell [template]="customTemplate[header.key]" [header]="header" [row]="row"></rog-cell>
         </td>

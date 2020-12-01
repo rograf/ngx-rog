@@ -15,10 +15,9 @@ export class TableBase {
   headers;
   rows;
   customTemplate;
-  actionsTemplate;
 
   onChangePage(event){
-    console.log(event)
+    this.params.page = event.currentPage + 1;
     this.setQueryParams();
   }
 
@@ -28,7 +27,9 @@ export class TableBase {
     } else {
       this.params.sort = column;
     }
-    this.rows = [...sortBy.transform(this.rows, this.params.sort)]
+    if(!!this.options.length){
+      this.rows = [...sortBy.transform(this.rows, this.params.sort)]
+    }
     this.setQueryParams();
   }
 

@@ -1,18 +1,18 @@
-<rog-paginator #paginator [length]="options.length || rows.length" [pageSize]="options.pageSize" (page)="onChangePage($event); paginator2.currentPage = $event.currentPage + 1"></rog-paginator>
+<rog-paginator #paginator2 [length]="options.length || rows.length" [pageSize]="options.pageSize" (page)="paginator.currentPage = $event.currentPage + 1"></rog-paginator>
 
 <div [ngStyle]="options.height?{'height': options.height, 'overflow': 'auto'} : ''">
-
-  <div *ngFor="let row of rows | slice: paginator.startIndex:paginator.endIndex" class="r-list">
+  
+  <div *ngFor="let row of options.length?rows : rows | slice: paginator.startIndex:paginator.endIndex" class="r-list">
     <div *ngFor="let header of headers" [style.width]="header.widthList || '100%'" class="r-list__item">
       <label class="r-label">{{header.displayName}}</label>
       <rog-cell [template]="customTemplate[header.key]" [header]="header" [row]="row"></rog-cell>
     </div>
     <div *ngIf="customTemplate._actions" class="r-list__actions">
       <ng-container
-        *ngTemplateOutlet="customTemplate._actions; context: { row: row }"
+      *ngTemplateOutlet="customTemplate._actions; context: { row: row }"
       ></ng-container>
     </div>
   </div>
 </div>
 
-<rog-paginator #paginator2 [length]="options.length || rows.length" [pageSize]="options.pageSize" (page)="onChangePage($event); paginator.currentPage = $event.currentPage + 1"></rog-paginator>
+<rog-paginator #paginator [length]="options.length || rows.length" [pageSize]="options.pageSize" (page)="onChangePage($event); paginator2.currentPage = $event.currentPage + 1"></rog-paginator>

@@ -1,5 +1,6 @@
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { ListPagComponent } from './../list-pag/list-pag.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'rog-list-vs',
@@ -7,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-vs.component.scss']
 })
 export class ListVsComponent extends ListPagComponent implements OnInit {
+
+  @ViewChild(CdkVirtualScrollViewport)
+  public viewPort: CdkVirtualScrollViewport;
 
   constructor() {
     super()
@@ -18,6 +22,20 @@ export class ListVsComponent extends ListPagComponent implements OnInit {
     }
     if(!this.options.height){
       throw '[TABLE] Missed height in options'
+    }
+  }
+
+  scroll(index){
+    if(!!this.options.length){
+      const end = this.viewPort.getRenderedRange().end;
+      const total = this.viewPort.getDataLength();
+      const currentPage = Math.ceil(end / this.options.pageSize) - 1;
+      this.params.page = currentPage;
+      if(end === total && total < this.options.length){
+        this.setQueryParams();
+      } else {
+        this.setQueryParams(false);
+      }
     }
   }
 

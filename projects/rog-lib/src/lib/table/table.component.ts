@@ -54,6 +54,9 @@ export class RogTableComponent implements OnInit {
   @Input() set rows(value) {
     this._rows = value;
     this.displayRows = value;
+    if(this.componentRef?.instance){
+      this.componentRef.instance.rows = value;
+    }
   }
   get rows() {
     return this._rows;
@@ -74,6 +77,7 @@ export class RogTableComponent implements OnInit {
 
   displayRows = [];
   customTemplate: any = {};
+  componentRef;
 
   @ContentChildren(RogTemplateDirective)
   tableCellTemplate: QueryList<RogTemplateDirective>;
@@ -129,13 +133,13 @@ export class RogTableComponent implements OnInit {
         factory = this.resolver.resolveComponentFactory(ListPagComponent);
       }
     }
-    const componentRef: any = this.container.createComponent(factory);
-    componentRef.instance.params = this.params;
-    componentRef.instance.options = this.options;
-    componentRef.instance.headers = this.headers;
-    componentRef.instance.rows = this.rows;
-    componentRef.instance.customTemplate = this.customTemplate;
-    componentRef.instance.setQueryParams = this.setQueryParams.bind(this);
+    this.componentRef = this.container.createComponent(factory);
+    this.componentRef.instance.params = this.params;
+    this.componentRef.instance.options = this.options;
+    this.componentRef.instance.headers = this.headers;
+    this.componentRef.instance.rows = this.rows;
+    this.componentRef.instance.customTemplate = this.customTemplate;
+    this.componentRef.instance.setQueryParams = this.setQueryParams.bind(this);
   }
 
   ngAfterContentInit(): void {
@@ -178,8 +182,11 @@ export class RogTableComponent implements OnInit {
     };
   }
 
-  setQueryParams(){
+  setQueryParams(emit = true){
     const queryParams = {[this.name]: JSON.stringify(this.generateParams())};
+    if(emit){
+      this.page.emit(queryParams[this.name])
+    }
     this.router.navigate([],{queryParams, relativeTo: this.activatedRoute, queryParamsHandling: 'merge', replaceUrl: true})
   }
 

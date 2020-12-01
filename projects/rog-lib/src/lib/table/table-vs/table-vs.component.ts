@@ -12,14 +12,13 @@ export class TableVsComponent extends TablePagComponent implements OnInit {
   public viewPort: CdkVirtualScrollViewport;
 
   headerTop = '0px';
-
-  public get inverseTranslation(): string {
-    if (!this.viewPort || !this.viewPort['_renderedContentTransform']) {
-      return '0';
-    }
-    this.headerTop = `-${this.viewPort.getOffsetToRenderedContentStart()}px`
-    return '0'
-  }
+  // public get inverseTranslation(): string {
+  //   if (!this.viewPort || !this.viewPort['_renderedContentTransform']) {
+  //     return '0';
+  //   }
+    
+  //   return '0'
+  // }
 
   constructor() {
     super();
@@ -33,4 +32,20 @@ export class TableVsComponent extends TablePagComponent implements OnInit {
       throw '[TABLE] Missed height in options'
     }
   }
+
+  scroll(index){
+    this.headerTop = `-${this.viewPort.getOffsetToRenderedContentStart()}px`;
+    if(!!this.options.length){
+      const end = this.viewPort.getRenderedRange().end;
+      const total = this.viewPort.getDataLength();
+      const currentPage = Math.ceil(end / this.options.pageSize) - 1;
+      this.params.page = currentPage;
+      if(end === total && total < this.options.length){
+        this.setQueryParams();
+      } else {
+        this.setQueryParams(false);
+      }
+    }
+  }
+
 }
