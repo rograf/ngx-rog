@@ -1,4 +1,4 @@
-<rog-paginator #paginator2 [length]="options.length || rows.length" [pageSize]="options.pageSize" [currentPage]="params.page" (page)="paginator.currentPage = $event.currentPage + 1"></rog-paginator>
+<rog-paginator #paginator2 [length]="options.length || rows.length" [pageSize]="options.pageSize" [currentPage]="params.page || 1" (page)="paginator.currentPage = $event.currentPage + 1"></rog-paginator>
 
 <div [ngStyle]="options.height?{'height': options.height, 'overflow': 'auto'} : ''">
   
@@ -15,4 +15,4 @@
   </div>
 </div>
 
-<rog-paginator #paginator [length]="options.length || rows.length" [pageSize]="options.pageSize" [currentPage]="params.page" (page)="onChangePage($event);"></rog-paginator>
+<rog-paginator #paginator [length]="options.length || rows.length" [pageSize]="options.pageSize" [currentPage]="params.page || 1" (page)="onChangePage($event); paginator2.currentPage = $event.currentPage + 1"></rog-paginator>

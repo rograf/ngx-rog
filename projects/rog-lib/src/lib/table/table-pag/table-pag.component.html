@@ -33,4 +33,4 @@
   </table>
 </div>
 
-<rog-paginator #paginator [length]="options.length || rows.length" [pageSize]="options.pageSize" [currentPage]="params.page" (page)="onChangePage($event)"></rog-paginator>
+<rog-paginator #paginator [length]="options.length || rows.length" [pageSize]="options.pageSize" [currentPage]="params.page || 1" (page)="onChangePage($event)"></rog-paginator>
