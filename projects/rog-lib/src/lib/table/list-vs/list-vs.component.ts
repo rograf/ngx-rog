@@ -29,7 +29,7 @@ export class ListVsComponent extends ListPagComponent implements OnInit {
     if(!!this.options.length){
       const end = this.viewPort.getRenderedRange().end;
       const total = this.viewPort.getDataLength();
-      const currentPage = Math.floor(end / this.options.pageSize);
+      const currentPage = Math.floor(end / this.options.pageSize) + 1;
       this.params.page = currentPage;
       if(end === total && total < this.options.length){
         this.setQueryParams();

@@ -34,7 +34,8 @@ export class TableService {
   query(options:any = {}){
     let rows = [...this.rows];
     if(options.pageSize){
-      rows = rows.slice(options.page || 0,options.pageSize + options.page || 0)
+      const page = (options.page || 1) - 1
+      rows = rows.slice( (options.pageSize * page),options.pageSize + (options.pageSize * page))
     }
     return of({list:rows,total:this.rows.length})
   }
