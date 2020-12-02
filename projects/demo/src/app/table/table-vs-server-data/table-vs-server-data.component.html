@@ -1,5 +1,5 @@
-<h1>Sample tables</h1>
-<rog-table [headers]="headers" [rows]="rows" name="vs-table" [options]="{length: 100, pageSize: 20, virtualScroll: true, itemSize: 25, itemSizeVS: '350', height: '300px'}" (page)="onChangePage($event)">
+<h1>Pagination on server side Virtual Scroll</h1>
+<rog-table [headers]="headers" [rows]="rows" name="vs-table" [options]="options" (page)="onChangePage($event)">
 
   <ng-template rogTemplate="age" let-value="value" let-row="row">
     -

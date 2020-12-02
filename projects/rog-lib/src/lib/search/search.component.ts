@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 
 @Component({
   selector: 'rog-search',
@@ -7,7 +7,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  query: string;
+  @Input() query: string;
   queryDebounce: string;
 
   @Output() search = new EventEmitter();

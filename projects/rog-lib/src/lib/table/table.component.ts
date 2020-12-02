@@ -53,7 +53,6 @@ export class RogTableComponent implements OnInit {
 
   @Input() set rows(value) {
     this._rows = value;
-    this.displayRows = value;
     if(this.componentRef?.instance){
       this.componentRef.instance.rows = value;
     }
@@ -75,7 +74,6 @@ export class RogTableComponent implements OnInit {
     query: null,
   };
 
-  displayRows = [];
   customTemplate: any = {};
   componentRef;
 
@@ -156,18 +154,22 @@ export class RogTableComponent implements OnInit {
 
           if(params.query){
             this.params.query = params.query;
+            // let rows = this.filter.transform(this.rows, this.params.query);
+            // if(this.params.sort){
+            //   rows = this.sortBy.transform(rows, this.params.sort)
+            // }
+            // this.componentRef.instance.rows = rows;
+
             // this.search.queryDebounce = params.query;
             // this.displayRows = this.filter.transform(this.rows, params.query)
           }
 
           if(params.sort){
             this.params.sort = params.sort;
-            // this.displayRows = this.sortBy.transform(this.displayRows, this.params.sort)
           }
 
           if(params.page){
             this.params.page = params.page;
-            // this.paginator.calculateIndex();
           }
 
         }
@@ -185,19 +187,21 @@ export class RogTableComponent implements OnInit {
   setQueryParams(emit = true){
     const queryParams = {[this.name]: JSON.stringify(this.generateParams())};
     if(emit){
-      this.page.emit(queryParams[this.name])
+      this.page.emit(JSON.parse(queryParams[this.name]))
     }
     this.router.navigate([],{queryParams, relativeTo: this.activatedRoute, queryParamsHandling: 'merge', replaceUrl: true})
   }
 
   onChangeSearch(query) {
-    // this.paginator.currentPage = 1;
-    // this.paginator.calculateIndex();
-    // let rows = this.filter.transform(this.rows, query);
-    // if(this.sortedColumn){
-    //   rows = this.sortBy.transform(rows, this.sortedColumn)
-    // }
-    // this.displayRows = rows;
-    // this.setQueryParams();
+    if(query !== this.params.query){
+      this.params.page = 1;
+      this.params.query = query;
+    }
+    let rows = this.filter.transform(this.rows, query);
+    if(this.params.sort){
+      rows = this.sortBy.transform(rows, this.params.sort)
+    }
+    this.componentRef.instance.rows = rows;
+    this.setQueryParams();
   }
 }

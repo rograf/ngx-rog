@@ -1,12 +1,5 @@
-<h1>Sample tables</h1>
-<rog-table [headers]="headers" [rows]="rows" [options]="{pageSize: 10}" (page)="onChangePage($event)">
-
-  <ng-template rogTemplate="age" let-value="value" let-row="row">
-    -
-  </ng-template>
-
-  <ng-template rogTemplate="_actions" let-row="row">
-    <button (click)="row.verified = !row.verified">Verify</button>
-  </ng-template>
-
-</rog-table>
+<p><a routerLink="/table/front">Table: pagination on frontend side</a></p>
+<p><a routerLink="/table/server">Table: pagination on server side</a></p>
+<p><a routerLink="/table/front-vs">Table: pagination on frontend side Virtual Scroll</a></p>
+<p><a routerLink="/table/server-vs">Table: pagination on server side Virtual Scroll</a></p>
+<router-outlet></router-outlet>

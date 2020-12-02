@@ -1,0 +1,12 @@
+<h1>Pagination on server side</h1>
+<rog-table [headers]="headers" [rows]="rows" [options]="options" (page)="onChangePage($event)">
+
+  <ng-template rogTemplate="age" let-value="value" let-row="row">
+    -
+  </ng-template>
+
+  <ng-template rogTemplate="_actions" let-row="row">
+    <button (click)="row.verified = !row.verified">Verify</button>
+  </ng-template>
+
+</rog-table>

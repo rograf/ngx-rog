@@ -1,5 +1,5 @@
-<h1>Table with pagination</h1>
-<rog-table [headers]="headers" [rows]="rows" [options]="{pageSize: 10, length:100}" (page)="onChangePage($event)">
+<h1>Pagination on frontend side</h1>
+<rog-table [headers]="headers" [rows]="rows" [options]="{pageSize: 10}">
 
   <ng-template rogTemplate="age" let-value="value" let-row="row">
     -
@@ -10,5 +10,3 @@
   </ng-template>
 
 </rog-table>
-
-{{rows[0].name}}

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TableVsPagComponent } from './table-vs-pag.component';
+import { TableFrontDataComponent } from './table-front-data.component';
 
-describe('TableVsPagComponent', () => {
-  let component: TableVsPagComponent;
-  let fixture: ComponentFixture<TableVsPagComponent>;
+describe('TableFrontDataComponent', () => {
+  let component: TableFrontDataComponent;
+  let fixture: ComponentFixture<TableFrontDataComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TableVsPagComponent ]
+      declarations: [ TableFrontDataComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TableVsPagComponent);
+    fixture = TestBed.createComponent(TableFrontDataComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

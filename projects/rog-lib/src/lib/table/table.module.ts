@@ -21,7 +21,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     PaginatorModule,
     SearchModule,
     ScrollingModule,
-    RouterModule.forRoot([]),
+    RouterModule,
     RogModule
   ],
   exports: [RogTableComponent]
