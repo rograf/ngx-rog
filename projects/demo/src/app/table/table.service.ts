@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as faker from 'faker';
 import { of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +38,7 @@ export class TableService {
       const page = (options.page || 1) - 1
       rows = rows.slice( (options.pageSize * page),options.pageSize + (options.pageSize * page))
     }
-    return of({list:rows,total:this.rows.length})
+    return of({list:rows,total:this.rows.length}).pipe(delay(500))
   }
 
 }

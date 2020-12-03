@@ -40,7 +40,7 @@ export class TableServerDataComponent implements OnInit {
 
   loadData(){
     this.service.query({pageSize: 10, page: 0}).subscribe((res)=>{
-      this.options.length = res.total
+      this.options = {...this.options, length: res.total}
       this.rows = res.list;
     })
   }

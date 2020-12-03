@@ -4,7 +4,7 @@ import { SYMBOL_TO_REVERSE } from './../../_core/variables';
 
 const sortBy: RogSortByPipe = new RogSortByPipe();
 
-export class TableBase {
+export abstract class TableBase {
 
   constructor(){
     setTimeout(()=>{
@@ -21,7 +21,15 @@ export class TableBase {
   params;
   options;
   headers;
-  rows;
+  _rows = []
+
+  get rows() {
+    return this._rows;
+  }
+
+  set rows(value) {
+    this._rows = value;
+  }
   customTemplate;
 
   onChangePage(event){

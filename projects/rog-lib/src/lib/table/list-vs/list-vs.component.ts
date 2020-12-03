@@ -12,6 +12,19 @@ export class ListVsComponent extends ListPagComponent implements OnInit {
   @ViewChild(CdkVirtualScrollViewport)
   public viewPort: CdkVirtualScrollViewport;
 
+  locked = false;
+
+  get rows() {
+    return this._rows;
+  }
+
+  set rows(value) {
+    if(value.length !== this._rows.length){
+      this.locked = false;
+    }
+    this._rows = value;
+  }
+
   constructor() {
     super()
   }
@@ -26,14 +39,19 @@ export class ListVsComponent extends ListPagComponent implements OnInit {
   }
 
   scroll(index){
+    if(!index){
+      return false;
+    }
     if(!!this.options.length){
       const end = this.viewPort.getRenderedRange().end;
       const total = this.viewPort.getDataLength();
-      const currentPage = Math.floor(end / this.options.pageSize) + 1;
-      this.params.page = currentPage;
-      if(end === total && total < this.options.length){
+      const currentPage = Math.floor(end / this.options.pageSize);
+      if(end === total && !this.locked){
+        this.locked = true;
+        this.params.page = currentPage + 1;
         this.setQueryParams();
       } else {
+        this.params.page = currentPage;
         this.setQueryParams(false);
       }
     }

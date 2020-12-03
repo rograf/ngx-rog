@@ -63,6 +63,9 @@ export class RogTableComponent implements OnInit {
 
   @Input() set options(value) {
     this._options = { ...this.options, ...value };
+    if(this.componentRef?.instance){
+      this.componentRef.instance.options = this._options;
+    }
   }
   get options() {
     return this._options;
