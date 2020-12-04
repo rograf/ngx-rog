@@ -190,6 +190,7 @@ export class RogTableComponent implements OnInit {
           }
 
         }
+        this.emitPage();
     });
   }
 
@@ -204,9 +205,13 @@ export class RogTableComponent implements OnInit {
   setQueryParams(emit = true){
     const queryParams = {[this.name]: JSON.stringify(this.generateParams())};
     if(emit){
-      this.page.emit(JSON.parse(queryParams[this.name]))
+      this.emitPage();
     }
     this.router.navigate([],{queryParams, relativeTo: this.activatedRoute, queryParamsHandling: 'merge', replaceUrl: true})
+  }
+
+  emitPage(){
+    this.page.emit({pageSize: this.options.pageSize, page: 1, ...this.generateParams()})
   }
 
   onChangeSearch(query) {

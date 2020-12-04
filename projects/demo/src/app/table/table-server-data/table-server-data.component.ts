@@ -36,18 +36,11 @@ export class TableServerDataComponent implements OnInit {
   length = 0;
 
   ngOnInit(): void {
-    this.loadData();
-  }
-
-  loadData(){
-    this.service.query({pageSize: 10, page: 0}).subscribe((res)=>{
-      this.length = res.total;
-      this.rows = res.list;
-    })
   }
 
   onChangePage(event) {
-    this.service.query({pageSize: 10, ...event}).subscribe((res)=>{
+    this.service.query({...event}).subscribe((res)=>{
+      this.length = res.total;
       this.rows = res.list;
     })
   }

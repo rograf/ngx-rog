@@ -14,11 +14,11 @@ export class RogNgModelChangeDirective {
   subscription;
 
   @Input('rogNgModelChangeDelay') set delay (value){
-    if(!value && value !== 0){
-      value = 500
-    }
-    this._delay = value;
-    this.setSubscription();
+    // if(!value && value !== 0){
+    //   value = 500
+    // }
+    // this._delay = value;
+    // this.setSubscription();
   }
   get delay(){
     return this._delay;
@@ -37,13 +37,13 @@ export class RogNgModelChangeDirective {
     });
   }
 
-  ngAfterViewInit(): void {
-    if(!this.subscription){
-      this.setSubscription();
-    }
-  }
+  // ngAfterViewInit(): void {
+  //   if(!this.subscription){
+  //   }
+  // }
 
   constructor(private ngModel: NgModel) {
+    this.setSubscription();
   }
 
   ngOnDestroy() {
