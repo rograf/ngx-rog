@@ -33,6 +33,7 @@ export class TableServerDataComponent implements OnInit {
   }
 
   rows = [];
+  length = 0;
 
   ngOnInit(): void {
     this.loadData();
@@ -40,7 +41,7 @@ export class TableServerDataComponent implements OnInit {
 
   loadData(){
     this.service.query({pageSize: 10, page: 0}).subscribe((res)=>{
-      this.options = {...this.options, length: res.total}
+      this.length = res.total;
       this.rows = res.list;
     })
   }

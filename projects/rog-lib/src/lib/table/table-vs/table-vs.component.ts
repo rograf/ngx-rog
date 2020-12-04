@@ -30,7 +30,7 @@ export class TableVsComponent extends TablePagComponent implements OnInit {
   }
 
   set rows(value) {
-    if(value.length !== this._rows.length || value.length === this.options.length){
+    if(value.length !== this._rows.length || value.length === this.length){
       this.locked = false;
     }
     this._rows = value;
@@ -55,7 +55,7 @@ export class TableVsComponent extends TablePagComponent implements OnInit {
       return false;
     }
     this.headerTop = `-${this.viewPort.getOffsetToRenderedContentStart()}px`;
-    if(!!this.options.length){
+    if(!!this.length){
       const end = this.viewPort.getRenderedRange().end;
       const total = this.viewPort.getDataLength();
       const currentPage = Math.floor(end / this.options.pageSize);

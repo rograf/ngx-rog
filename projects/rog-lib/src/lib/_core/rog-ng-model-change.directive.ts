@@ -9,16 +9,39 @@ export class RogNgModelChangeDirective {
 
   @Output()
   rogNgModelChange = new EventEmitter<any>();
-  @Input()
-  rogNgModelChangeTime = 500;
 
-  subscription = this.ngModel.control.valueChanges.pipe(
-    skip(1),
-    distinctUntilChanged(),
-    debounceTime(this.rogNgModelChangeTime)
-  ).subscribe((value) => {
-    this.rogNgModelChange.emit(value)
-  });
+  _delay = 500;
+  subscription;
+
+  @Input('rogNgModelChangeDelay') set delay (value){
+    if(!value && value !== 0){
+      value = 500
+    }
+    this._delay = value;
+    this.setSubscription();
+  }
+  get delay(){
+    return this._delay;
+  }
+
+  setSubscription(){
+    if(this.subscription){
+      this.subscription.unsubscribe();
+    }
+    this.subscription = this.ngModel.control.valueChanges.pipe(
+      skip(1),
+      distinctUntilChanged(),
+      debounceTime(this.delay)
+    ).subscribe((value) => {
+      this.rogNgModelChange.emit(value)
+    });
+  }
+
+  ngAfterViewInit(): void {
+    if(!this.subscription){
+      this.setSubscription();
+    }
+  }
 
   constructor(private ngModel: NgModel) {
   }

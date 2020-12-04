@@ -7,11 +7,7 @@ const sortBy: RogSortByPipe = new RogSortByPipe();
 export abstract class TableBase {
 
   constructor(){
-    setTimeout(()=>{
-      if(this.params.sort && !this.options.length){
-        this.rows = [...sortBy.transform(this.rows, this.params.sort)]
-      }
-    })
+
   }
 
   getDescendantProp = getDescendantProp;
@@ -21,6 +17,7 @@ export abstract class TableBase {
   params;
   options;
   headers;
+  length;
   _rows = []
 
   get rows() {
@@ -28,7 +25,11 @@ export abstract class TableBase {
   }
 
   set rows(value) {
-    this._rows = value;
+    if(this.params.sort && !this.length){
+      this._rows = [...sortBy.transform(value, this.params.sort)]
+    } else {
+      this._rows = value;
+    }
   }
   customTemplate;
 
@@ -38,12 +39,15 @@ export abstract class TableBase {
   }
 
   onChangeSorting(column){
+    if(this.params.page){
+      this.params.page = 1;
+    }
     if(this.params.sort === column){
       this.params.sort = SYMBOL_TO_REVERSE + column
     } else {
       this.params.sort = column;
     }
-    if(!this.options.length){
+    if(!this.length){
       this.rows = [...sortBy.transform(this.rows, this.params.sort)]
     }
     this.setQueryParams();

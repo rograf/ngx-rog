@@ -42,6 +42,7 @@ export class PaginatorComponent implements OnInit {
   }
 
   @Input() currentPage = 1
+  @Input() delay = 500;
   totalPages = 1
   startIndex = 0
   endIndex = 0

@@ -31,6 +31,7 @@ export class TableVsServerDataComponent implements OnInit {
   options:any = {pageSize: 20, virtualScroll: true, itemSize: 25, itemSizeVS: '350', height: '400px'}
 
   rows = [];
+  length = 0;
 
   ngOnInit(): void {
     this.loadData();
@@ -38,7 +39,7 @@ export class TableVsServerDataComponent implements OnInit {
 
   loadData(){
     this.service.query({pageSize: 20, page: 0}).subscribe((res)=>{
-      this.options = {...this.options, length: res.total}
+      this.length = res.total;
       this.rows = res.list;
     })
   }

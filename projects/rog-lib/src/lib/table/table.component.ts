@@ -22,13 +22,12 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { SlicePipe } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
 export class TableOptions {
   paginator = true;
   pageSize = 10;
-  length = 0;
+  delay = 0;
   height = null;
   listBreakPoint = 800;
   virtualScroll = false;
@@ -42,6 +41,7 @@ export class TableOptions {
 export class RogTableComponent implements OnInit {
   private _rows: any[] = [];
   private _options = new TableOptions();
+  private _length: string;
 
   @ViewChild('search') search: SearchComponent;
   @ViewChild('container', { read: ViewContainerRef }) container: ViewContainerRef;
@@ -59,6 +59,20 @@ export class RogTableComponent implements OnInit {
   }
   get rows() {
     return this._rows;
+  }
+
+  @Input() set length(value) {
+    this._length = value;
+    if(this.componentRef?.instance){
+      if(!this.options.delay && value){
+        this.options.delay = 500;
+        this.componentRef.instance.options.delay = this.options.delay;
+      }
+      this.componentRef.instance.length = value;
+    }
+  }
+  get length() {
+    return this._length;
   }
 
   @Input() set options(value) {

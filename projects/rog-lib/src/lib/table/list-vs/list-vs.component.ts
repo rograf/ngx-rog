@@ -42,7 +42,7 @@ export class ListVsComponent extends ListPagComponent implements OnInit {
     if(!index){
       return false;
     }
-    if(!!this.options.length){
+    if(!!this.length){
       const end = this.viewPort.getRenderedRange().end;
       const total = this.viewPort.getDataLength();
       const currentPage = Math.floor(end / this.options.pageSize);
