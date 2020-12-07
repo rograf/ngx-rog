@@ -1,3 +1,4 @@
+import { SearchModule } from './../../../../rog-lib/src/lib/search/search.module';
 import { PaginatorModule } from './../../../../rog-lib/src/lib/paginator/paginator.module';
 import { TableServerDataComponent } from './table-server-data/table-server-data.component';
 import { TableRoutingModule } from './table.routing';
@@ -17,6 +18,7 @@ import { TableVsServerDataComponent } from './table-vs-server-data/table-vs-serv
     CommonModule,
     TableRoutingModule,
     RogModule,
+    SearchModule.forRoot({icon:'<i class="fas fa-search"></i>'}),
     // PaginatorModule.forRoot({labelLeft: 'Prev'}),
     RogTableModule.forRoot({pageSize:20})
   ]
