@@ -1,4 +1,6 @@
-<rog-search #search (search)="onChangeSearch($event)" [query]="params.query"></rog-search>
+<div>
+  <rog-search #search (search)="onChangeSearch($event)" [query]="params.query" [placeholder]="options.searchText" [style.width]="options.searchWidth"></rog-search>
+</div>
 
 <!-- <rog-table-pag [headers]="headers" [rows]="rows" [options]="options" [customTemplate]="customTemplate" [params]="params" [setQueryParams]="setQueryParams.bind(this)"></rog-table-pag> -->
 

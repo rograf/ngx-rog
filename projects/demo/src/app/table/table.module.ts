@@ -1,3 +1,4 @@
+import { PaginatorModule } from './../../../../rog-lib/src/lib/paginator/paginator.module';
 import { TableServerDataComponent } from './table-server-data/table-server-data.component';
 import { TableRoutingModule } from './table.routing';
 import { TableFrontDataComponent } from './table-front-data/table-front-data.component';
@@ -16,6 +17,7 @@ import { TableVsServerDataComponent } from './table-vs-server-data/table-vs-serv
     CommonModule,
     TableRoutingModule,
     RogModule,
+    // PaginatorModule.forRoot({labelLeft: 'Prev'}),
     RogTableModule.forRoot({pageSize:20})
   ]
 })

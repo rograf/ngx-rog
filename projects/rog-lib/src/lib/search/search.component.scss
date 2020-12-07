@@ -1,0 +1,14 @@
+:host {
+  position: relative;
+  display: block;
+}
+.r-search {
+  &__input {
+    width: 100%;
+  }
+  &__icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}

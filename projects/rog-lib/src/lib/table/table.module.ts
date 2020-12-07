@@ -18,8 +18,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
   declarations: [RogTableComponent, TableVsComponent, TablePagComponent, ListPagComponent, ListVsComponent, CellComponent],
   imports: [
     CommonModule,
-    PaginatorModule,
-    SearchModule,
+    PaginatorModule.forChild(),
+    SearchModule.forChild(),
     ScrollingModule,
     RouterModule,
     RogModule
@@ -36,12 +36,21 @@ export class RogTableModule {
     }
   }
 
-  static forRoot(config: ITableOptions = {}): ModuleWithProviders<RogTableModule> {
+  static forRoot(tableConfig: ITableOptions = {}): ModuleWithProviders<RogTableModule> {
     return {
       ngModule: RogTableModule,
       providers: [
         TableService,
-        {provide: 'config', useValue: config}
+        {provide: 'tableConfig', useValue: tableConfig}
+      ]
+    };
+  }
+
+  static forChild(): ModuleWithProviders<PaginatorModule> {
+    return {
+      ngModule: PaginatorModule,
+      providers: [
+        TableService,
       ]
     };
   }

@@ -1,9 +1,11 @@
 
 import { Inject, Injectable, Optional } from '@angular/core';
 
-export class ITableOptions {
+export interface ITableOptions {
   paginator?: boolean;
   pageSize?: number;
+  searchText?: string;
+  searchWidth?: string;
   delay?: number;
   height?: string;
   listBreakPoint?: number;
@@ -15,6 +17,8 @@ export class TableOptions {
   pageSize = 10;
   delay = 0;
   height = null;
+  searchText = null;
+  searchWidth = '15rem';
   listBreakPoint = 800;
   virtualScroll = false;
 }
@@ -24,11 +28,10 @@ export class TableService {
 
   options = new TableOptions();
 
-  constructor(@Inject('config') config:ITableOptions) {
-    if (config) {
-      this.options = {...this.options, ...config}
+  constructor(@Optional() @Inject('tableConfig') tableConfig:ITableOptions) {
+    if (tableConfig) {
+      this.options = {...this.options, ...tableConfig}
      }
   }
-
 
 }

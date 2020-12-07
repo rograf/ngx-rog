@@ -30,6 +30,7 @@ export class TableServerDataComponent implements OnInit {
 
   options:any = {
     pageSize: 10,
+    searchText: 'Start typing...'
   }
 
   rows = [];

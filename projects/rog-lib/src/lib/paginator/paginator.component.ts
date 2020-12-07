@@ -1,8 +1,7 @@
+import { PaginatorService } from './paginator.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-export class PaginatorOptions {
-  
-}
+
 
 @Component({
   selector: 'rog-paginator',
@@ -14,7 +13,7 @@ export class PaginatorComponent implements OnInit {
   private inDebounce;
   private _length = 0;
   private _pageSize = 0;
-  private _options = new PaginatorOptions(); 
+  private _options = this.service.options; 
 
   @Output() page = new EventEmitter();
 
@@ -47,7 +46,9 @@ export class PaginatorComponent implements OnInit {
   startIndex = 0
   endIndex = 0
 
-  constructor() { }
+  constructor(
+    private service:PaginatorService
+  ) { }
 
   ngOnInit(): void {
   }
