@@ -1,3 +1,4 @@
+import { TableService } from './table.service';
 import { TableVsComponent } from './table-vs/table-vs.component';
 import { ListVsComponent } from './list-vs/list-vs.component';
 import { ListPagComponent } from './list-pag/list-pag.component';
@@ -24,14 +25,7 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-export class TableOptions {
-  paginator = true;
-  pageSize = 10;
-  delay = 0;
-  height = null;
-  listBreakPoint = 800;
-  virtualScroll = false;
-}
+
 
 @Component({
   selector: 'rog-table',
@@ -40,7 +34,7 @@ export class TableOptions {
 })
 export class RogTableComponent implements OnInit {
   private _rows: any[] = [];
-  private _options = new TableOptions();
+  private _options = this.service.options;
   private _length: string;
 
   @ViewChild('search') search: SearchComponent;
@@ -98,6 +92,7 @@ export class RogTableComponent implements OnInit {
   tableCellTemplate: QueryList<RogTemplateDirective>;
 
   constructor(
+    private service: TableService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private filter: RogFilterPipe,

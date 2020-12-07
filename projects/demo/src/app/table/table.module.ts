@@ -16,7 +16,7 @@ import { TableVsServerDataComponent } from './table-vs-server-data/table-vs-serv
     CommonModule,
     TableRoutingModule,
     RogModule,
-    RogTableModule
+    RogTableModule.forRoot({pageSize:20})
   ]
 })
 export class TableModule { }

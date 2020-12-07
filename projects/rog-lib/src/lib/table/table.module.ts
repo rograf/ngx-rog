@@ -1,7 +1,7 @@
-import { FormsModule } from '@angular/forms';
+import { TableService, ITableOptions } from './table.service';
 import { PaginatorModule } from './../paginator/paginator.module';
 import { RogModule } from './../_core/core.module';
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RogTableComponent } from './table.component';
 import { SearchModule } from '../search/search.module';
@@ -26,4 +26,24 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
   ],
   exports: [RogTableComponent]
 })
-export class RogTableModule { }
+
+export class RogTableModule {
+
+  constructor(@Optional() @SkipSelf() parentModule?: RogTableModule) {
+    if (parentModule) {
+      throw new Error(
+        'RogTableModule is already loaded');
+    }
+  }
+
+  static forRoot(config: ITableOptions = {}): ModuleWithProviders<RogTableModule> {
+    return {
+      ngModule: RogTableModule,
+      providers: [
+        TableService,
+        {provide: 'config', useValue: config}
+      ]
+    };
+  }
+
+}
