@@ -1,12 +1,10 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 
 export interface ISearchOptions {
-  icon?: string;
   placeholder?: string;
 }
 
 export class SearchOptions {
-  icon = '🍳';
   placeholder = 'Search...';
 }
 

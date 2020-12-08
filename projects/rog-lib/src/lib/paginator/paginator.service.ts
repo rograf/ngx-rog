@@ -6,8 +6,8 @@ export interface IPaginatorOptions {
 }
 
 export class PaginatorOptions {
-  labelLeft = '←';
-  labelRight = '→';
+  labelLeft = '';
+  labelRight = '';
 }
 
 @Injectable()

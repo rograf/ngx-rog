@@ -18,7 +18,7 @@ import { TableVsServerDataComponent } from './table-vs-server-data/table-vs-serv
     CommonModule,
     TableRoutingModule,
     RogModule,
-    SearchModule.forRoot({icon:'<i class="fas fa-search"></i>'}),
+    // SearchModule.forRoot({icon:'<i class="fas fa-search"></i>'}),
     // PaginatorModule.forRoot({labelLeft: 'Prev'}),
     RogTableModule.forRoot({pageSize:20})
   ]
