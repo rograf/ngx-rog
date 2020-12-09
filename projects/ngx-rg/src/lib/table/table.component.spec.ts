@@ -1,20 +1,20 @@
 // import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-// import { RogTableComponent } from './table.component';
+// import { RgTableComponent } from './table.component';
 
 // describe('TableComponent', () => {
-//   let component: RogTableComponent;
-//   let fixture: ComponentFixture<RogTableComponent>;
+//   let component: RgTableComponent;
+//   let fixture: ComponentFixture<RgTableComponent>;
 
 //   beforeEach(async () => {
 //     await TestBed.configureTestingModule({
-//       declarations: [ RogTableComponent ]
+//       declarations: [ RgTableComponent ]
 //     })
 //     .compileComponents();
 //   });
 
 //   beforeEach(() => {
-//     fixture = TestBed.createComponent(RogTableComponent);
+//     fixture = TestBed.createComponent(RgTableComponent);
 //     component = fixture.componentInstance;
 //     fixture.detectChanges();
 //   });

@@ -1,10 +1,10 @@
 import { TableService, ITableOptions } from './table.service';
-import { PaginatorModule } from './../paginator/paginator.module';
-import { RogModule } from './../_core/core.module';
+import { RgPaginatorModule } from './../paginator/paginator.module';
+import { RgModule } from './../_core/core.module';
 import { NgModule, ModuleWithProviders, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RogTableComponent } from './table.component';
-import { SearchModule } from '../search/search.module';
+import { TableComponent } from './table.component';
+import { RgSearchModule } from '../search/search.module';
 import { RouterModule } from '@angular/router';
 import { TableVsComponent } from './table-vs/table-vs.component';
 import { TablePagComponent } from './table-pag/table-pag.component';
@@ -15,30 +15,30 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
 @NgModule({
-  declarations: [RogTableComponent, TableVsComponent, TablePagComponent, ListPagComponent, ListVsComponent, CellComponent],
+  declarations: [TableComponent, TableVsComponent, TablePagComponent, ListPagComponent, ListVsComponent, CellComponent],
   imports: [
     CommonModule,
-    PaginatorModule.forChild(),
-    SearchModule.forChild(),
+    RgPaginatorModule.forChild(),
+    RgSearchModule.forChild(),
     ScrollingModule,
     RouterModule,
-    RogModule
+    RgModule
   ],
-  exports: [RogTableComponent]
+  exports: [TableComponent]
 })
 
-export class RogTableModule {
+export class RgTableModule {
 
-  constructor(@Optional() @SkipSelf() parentModule?: RogTableModule) {
+  constructor(@Optional() @SkipSelf() parentModule?: RgTableModule) {
     if (parentModule) {
       throw new Error(
         'RgTableModule is already loaded');
     }
   }
 
-  static forRoot(tableConfig: ITableOptions = {}): ModuleWithProviders<RogTableModule> {
+  static forRoot(tableConfig: ITableOptions = {}): ModuleWithProviders<RgTableModule> {
     return {
-      ngModule: RogTableModule,
+      ngModule: RgTableModule,
       providers: [
         TableService,
         {provide: 'tableConfig', useValue: tableConfig}
@@ -46,9 +46,9 @@ export class RogTableModule {
     };
   }
 
-  static forChild(): ModuleWithProviders<PaginatorModule> {
+  static forChild(): ModuleWithProviders<RgPaginatorModule> {
     return {
-      ngModule: PaginatorModule,
+      ngModule: RgPaginatorModule,
       providers: [
         TableService,
       ]

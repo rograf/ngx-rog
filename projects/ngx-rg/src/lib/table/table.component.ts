@@ -33,7 +33,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
 })
-export class RogTableComponent implements OnInit {
+export class TableComponent implements OnInit {
   private _rows: any[] = [];
   private _options = this.service.options;
   private _length: string;

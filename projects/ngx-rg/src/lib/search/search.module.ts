@@ -1,5 +1,5 @@
 import { FormsModule } from '@angular/forms';
-import { RogModule } from './../_core/core.module';
+import { RgModule } from './../_core/core.module';
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchComponent } from './search.component';
@@ -11,23 +11,23 @@ import { ISearchOptions, SearchService } from './search.service';
   declarations: [SearchComponent],
   imports: [
     CommonModule,
-    RogModule,
+    RgModule,
     FormsModule
   ],
   exports: [SearchComponent]
 })
-export class SearchModule {
+export class RgSearchModule {
 
-  constructor(@Optional() @SkipSelf() parentModule?: SearchModule) {
+  constructor(@Optional() @SkipSelf() parentModule?: RgSearchModule) {
     if (parentModule) {
       throw new Error(
-        'SearchModule is already loaded');
+        'RgSearchModule is already loaded');
     }
   }
 
-  static forRoot(searchConfig: ISearchOptions = {}): ModuleWithProviders<SearchModule> {
+  static forRoot(searchConfig: ISearchOptions = {}): ModuleWithProviders<RgSearchModule> {
     return {
-      ngModule: SearchModule,
+      ngModule: RgSearchModule,
       providers: [
         SearchService,
         {provide: 'searchConfig', useValue: searchConfig}
@@ -35,9 +35,9 @@ export class SearchModule {
     };
   }
 
-  static forChild(): ModuleWithProviders<SearchModule> {
+  static forChild(): ModuleWithProviders<RgSearchModule> {
     return {
-      ngModule: SearchModule,
+      ngModule: RgSearchModule,
       providers: [
         SearchService,
       ]

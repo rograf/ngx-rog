@@ -1,6 +1,6 @@
 import { PaginatorService, IPaginatorOptions } from './paginator.service';
 import { FormsModule } from '@angular/forms';
-import { RogModule } from './../_core/core.module';
+import { RgModule } from './../_core/core.module';
 import { NgModule, ModuleWithProviders, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PaginatorComponent } from './paginator.component';
@@ -13,21 +13,21 @@ import { PaginatorComponent } from './paginator.component';
   imports: [
     CommonModule,
     FormsModule,
-    RogModule
+    RgModule
   ]
 })
-export class PaginatorModule {
+export class RgPaginatorModule {
 
-  constructor(@Optional() @SkipSelf() parentModule?: PaginatorModule) {
+  constructor(@Optional() @SkipSelf() parentModule?: RgPaginatorModule) {
     if (parentModule) {
       throw new Error(
-        'PaginatorModule is already loaded');
+        'RgPaginatorModule is already loaded');
     }
   }
 
-  static forRoot(paginatorConfig: IPaginatorOptions = {}): ModuleWithProviders<PaginatorModule> {
+  static forRoot(paginatorConfig: IPaginatorOptions = {}): ModuleWithProviders<RgPaginatorModule> {
     return {
-      ngModule: PaginatorModule,
+      ngModule: RgPaginatorModule,
       providers: [
         PaginatorService,
         {provide: 'paginatorConfig', useValue: paginatorConfig}
@@ -35,9 +35,9 @@ export class PaginatorModule {
     };
   }
 
-  static forChild(): ModuleWithProviders<PaginatorModule> {
+  static forChild(): ModuleWithProviders<RgPaginatorModule> {
     return {
-      ngModule: PaginatorModule,
+      ngModule: RgPaginatorModule,
       providers: [
         PaginatorService,
       ]

@@ -25,4 +25,4 @@ const DIRECTIVES = [
   providers: [...PIPES],
   exports: [...PIPES, ...DIRECTIVES]
 })
-export class RogModule { }
+export class RgModule { }
