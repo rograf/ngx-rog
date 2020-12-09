@@ -9,6 +9,7 @@ export interface ITableOptions {
   delay?: number;
   height?: string;
   title?: string;
+  actionsCell?: string;
   listBreakPoint?: number;
   virtualScroll?: boolean;
 }
@@ -16,6 +17,7 @@ export interface ITableOptions {
 export class TableOptions {
   paginator = true;
   pageSize = 10;
+  actionsCell = '_actions';
   delay = 0;
   title = null;
   height = null;
