@@ -62,7 +62,7 @@ export class PaginatorComponent implements OnInit {
   }
 
   calculateTotalPages(){
-    this.totalPages = Math.ceil(this.length / this.pageSize)
+    this.totalPages = Math.ceil(this.length / this.pageSize) || 1
   }
 
   calculateIndex(){

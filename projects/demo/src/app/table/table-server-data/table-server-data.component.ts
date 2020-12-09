@@ -29,7 +29,8 @@ export class TableServerDataComponent implements OnInit {
   ];
 
   options:any = {
-    pageSize: 10,
+    pageSize: 5,
+    title: 'Users',
     searchText: 'Start typing...'
   }
 

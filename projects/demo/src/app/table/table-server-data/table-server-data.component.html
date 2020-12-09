@@ -1,6 +1,10 @@
 <h1>Pagination on server side</h1>
 <rog-table [headers]="headers" [rows]="rows" [options]="options" [length]="length" (page)="onChangePage($event)">
 
+  <div>
+    <button>Add User</button>
+  </div>
+  
   <ng-template rogTemplate="age" let-value="value" let-row="row">
     -
   </ng-template>

@@ -4,12 +4,14 @@ export interface IPaginatorOptions {
   labelPrevious?: string;
   labelPreposition?: string;
   labelNext?: string;
+  autoHide?: boolean;
 }
 
 export class PaginatorOptions {
   labelPrevious = '';
   labelPreposition = '/';
   labelNext = '';
+  autoHide = true;
 }
 
 @Injectable()

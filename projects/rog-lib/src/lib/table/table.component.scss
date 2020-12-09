@@ -7,8 +7,26 @@
 ::ng-deep .r-table {
   width: 100%;
   position: relative;
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  &__nav-actions {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__title {
+    margin: 0;
+  }
   &__actions {
     text-align: right;
+  }
+  &__nav--list {
+    rog-search {
+      width: 100%;
+    }
   }
   &__header {
     position: sticky;

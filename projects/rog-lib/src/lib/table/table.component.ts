@@ -88,6 +88,7 @@ export class RogTableComponent implements OnInit {
 
   customTemplate: any = {};
   componentRef;
+  isTable = true;
 
   @ContentChildren(RogTemplateDirective)
   tableCellTemplate: QueryList<RogTemplateDirective>;
@@ -124,15 +125,15 @@ export class RogTableComponent implements OnInit {
 
   @HostListener('window:resize', [])
   createTable() {
-    const isTable = this.el.nativeElement.offsetWidth > this._options.listBreakPoint;
-    if(isTable && this.container.element?.nativeElement?.nextSibling?.tagName?.includes('TABLE')){
+    this.isTable = this.el.nativeElement.offsetWidth > this._options.listBreakPoint;
+    if(this.isTable && this.container.element?.nativeElement?.nextSibling?.tagName?.includes('TABLE')){
       return false;
-    } else if(!isTable && this.container.element?.nativeElement?.nextSibling?.tagName?.includes('LIST')){
+    } else if(!this.isTable && this.container.element?.nativeElement?.nextSibling?.tagName?.includes('LIST')){
       return false;
     }
     this.container.clear();
     let factory;
-    if (isTable) {
+    if (this.isTable) {
       if(this.options.virtualScroll){
         factory = this.resolver.resolveComponentFactory(TableVsComponent);
       } else {
@@ -149,6 +150,7 @@ export class RogTableComponent implements OnInit {
     this.componentRef.instance.params = this.params;
     this.componentRef.instance.options = this.options;
     this.componentRef.instance.headers = this.headers;
+    this.componentRef.instance.length = this.length;
     this.componentRef.instance.rows = this.rows;
     this.componentRef.instance.customTemplate = this.customTemplate;
     this.componentRef.instance.setQueryParams = this.setQueryParams.bind(this);

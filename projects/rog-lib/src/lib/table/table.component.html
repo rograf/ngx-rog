@@ -1,7 +1,11 @@
-<div>
-  <rog-search #search (search)="onChangeSearch($event)" [query]="params.query" [placeholder]="options.searchText" [style.width]="options.searchWidth"></rog-search>
+<div class="r-table__nav{{isTable?'':'--list'}}">
+  <div>
+    <h4 *ngIf="options.title" class="r-table__title">{{options.title}}</h4>
+  </div>
+  <div class="r-table__nav-actions">
+    <rog-search *ngIf="options.search" (search)="onChangeSearch($event)" [query]="params.query" [placeholder]="options.searchText"></rog-search>
+    <ng-content></ng-content>
+  </div>
 </div>
-
-<!-- <rog-table-pag [headers]="headers" [rows]="rows" [options]="options" [customTemplate]="customTemplate" [params]="params" [setQueryParams]="setQueryParams.bind(this)"></rog-table-pag> -->
 
 <template #container></template>

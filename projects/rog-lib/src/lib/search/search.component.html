@@ -1,3 +1,5 @@
-  <input class="r-search__input" type="text" name="query" [(ngModel)]="query" [value]="queryDebounce" (rogNgModelChange)="onQueryChange($event)" autocomplete="off" [placeholder]="placeholder || options.placeholder">
-  <span class="r-search__icon"></span>
+  <div class="r-search">
+    <input class="r-search__input" type="text" name="query" [(ngModel)]="query" [value]="queryDebounce" (rogNgModelChange)="onQueryChange($event)" autocomplete="off" [placeholder]="placeholder || options.placeholder">
+    <span class="r-search__icon"></span>
+  </div>
 
