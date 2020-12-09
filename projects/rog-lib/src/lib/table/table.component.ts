@@ -14,6 +14,7 @@ import {
   Component,
   ComponentFactoryResolver,
   ContentChildren,
+  ElementRef,
   EventEmitter,
   HostListener,
   Input,
@@ -95,6 +96,7 @@ export class RogTableComponent implements OnInit {
     private service: TableService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private el:ElementRef,
     private filter: RogFilterPipe,
     private resolver: ComponentFactoryResolver,
     private sortBy: RogSortByPipe
@@ -122,7 +124,7 @@ export class RogTableComponent implements OnInit {
 
   @HostListener('window:resize', [])
   createTable() {
-    const isTable = window.innerWidth > this._options.listBreakPoint;
+    const isTable = this.el.nativeElement.offsetWidth > this._options.listBreakPoint;
     if(isTable && this.container.element?.nativeElement?.nextSibling?.tagName?.includes('TABLE')){
       return false;
     } else if(!isTable && this.container.element?.nativeElement?.nextSibling?.tagName?.includes('LIST')){

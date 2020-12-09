@@ -1,5 +1,9 @@
 @import '../_theme/variables';
 
+:host {
+  display: block;
+}
+
 ::ng-deep .r-table {
   width: 100%;
   position: relative;
