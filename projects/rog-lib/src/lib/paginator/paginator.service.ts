@@ -1,13 +1,15 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 
 export interface IPaginatorOptions {
-  labelLeft?: string;
-  labelRight?: string;
+  labelPrevious?: string;
+  labelPreposition?: string;
+  labelNext?: string;
 }
 
 export class PaginatorOptions {
-  labelLeft = '';
-  labelRight = '';
+  labelPrevious = '';
+  labelPreposition = '/';
+  labelNext = '';
 }
 
 @Injectable()

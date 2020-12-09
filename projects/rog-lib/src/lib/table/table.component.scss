@@ -3,6 +3,9 @@
 ::ng-deep .r-table {
   width: 100%;
   position: relative;
+  &__actions {
+    text-align: right;
+  }
   &__header {
     position: sticky;
     top: 0;

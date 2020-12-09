@@ -23,7 +23,7 @@
         <td *ngFor="let header of headers">
           <rog-cell [template]="customTemplate[header.key]" [header]="header" [row]="row"></rog-cell>
         </td>
-        <td *ngIf="customTemplate._actions">
+        <td *ngIf="customTemplate._actions" class="r-table__actions">
           <ng-container
             *ngTemplateOutlet="customTemplate._actions; context: { row: row }"
           ></ng-container>
