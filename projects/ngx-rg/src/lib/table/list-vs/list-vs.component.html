@@ -1,0 +1,13 @@
+<cdk-virtual-scroll-viewport [itemSize]="options.itemSizeVS" [style.height]="options.height" (scrolledIndexChange)="scroll($event)">
+  <div *cdkVirtualFor="let row of rows" class="r-list">
+    <div *ngFor="let header of headers" [style.width]="header.widthList || '100%'" class="r-list__item">
+      <label class="r-label">{{header.displayName}}</label>
+      <rg-cell [template]="customTemplate[header.key]" [header]="header" [row]="row"></rg-cell>
+    </div>
+    <div *ngIf="customTemplate._actions" class="r-list__actions">
+      <ng-container
+        *ngTemplateOutlet="customTemplate._actions; context: { row: row }"
+      ></ng-container>
+    </div>
+  </div>
+</cdk-virtual-scroll-viewport>

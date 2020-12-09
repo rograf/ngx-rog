@@ -1,11 +1,11 @@
-import { SearchModule } from './../../../../rog-lib/src/lib/search/search.module';
-import { PaginatorModule } from './../../../../rog-lib/src/lib/paginator/paginator.module';
+import { SearchModule } from './../../../../ngx-rg/src/lib/search/search.module';
+import { PaginatorModule } from './../../../../ngx-rg/src/lib/paginator/paginator.module';
 import { TableServerDataComponent } from './table-server-data/table-server-data.component';
 import { TableRoutingModule } from './table.routing';
 import { TableFrontDataComponent } from './table-front-data/table-front-data.component';
 import { TableComponent } from './table.component';
-import { RogTableModule } from './../../../../rog-lib/src/lib/table/table.module';
-import { RogModule } from './../../../../rog-lib/src/lib/_core/core.module';
+import { RogTableModule } from './../../../../ngx-rg/src/lib/table/table.module';
+import { RogModule } from './../../../../ngx-rg/src/lib/_core/core.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TableVsFrontDataComponent } from './table-vs-front-data/table-vs-front-data.component';

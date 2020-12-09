@@ -1,5 +1,0 @@
-<div *ngIf="!options.autoHide || totalPages > 1" class="r-paginator">
-  <button [disabled]="currentPage <= 1" (click)="prevPage()" class="r-paginator__prev" >{{options.labelPrevious}}</button>
-  <input type="number" name="paginator" [(ngModel)]="currentPage" (rogNgModelChange)="setPage()" [rogNgModelChangeDelay]="delay" class="r-paginator__input"> {{options.labelPreposition}} {{totalPages}}
-  <button [disabled]="currentPage >= totalPages" (click)="nexPage()" class="r-paginator__next">{{options.labelNext}}</button>
-</div>
