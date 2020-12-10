@@ -30,10 +30,10 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 export class RgTableModule {
 
   constructor(@Optional() @SkipSelf() parentModule?: RgTableModule) {
-    if (parentModule) {
-      throw new Error(
-        'RgTableModule is already loaded');
-    }
+    // if (parentModule) {
+    //   throw new Error(
+    //     'RgTableModule is already loaded');
+    // }
   }
 
   static forRoot(tableConfig: ITableOptions = {}): ModuleWithProviders<RgTableModule> {

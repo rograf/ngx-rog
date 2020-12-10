@@ -22,6 +22,9 @@ export class ListVsComponent extends ListPagComponent implements OnInit {
     if(value.length !== this._rows.length){
       this.locked = false;
     }
+    if(value.length === this.length){
+      this.locked = true;
+    }
     this._rows = value;
   }
 

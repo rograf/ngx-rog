@@ -19,10 +19,10 @@ import { ISearchOptions, SearchService } from './search.service';
 export class RgSearchModule {
 
   constructor(@Optional() @SkipSelf() parentModule?: RgSearchModule) {
-    if (parentModule) {
-      throw new Error(
-        'RgSearchModule is already loaded');
-    }
+    // if (parentModule) {
+    //   throw new Error(
+    //     'RgSearchModule is already loaded');
+    // }
   }
 
   static forRoot(searchConfig: ISearchOptions = {}): ModuleWithProviders<RgSearchModule> {

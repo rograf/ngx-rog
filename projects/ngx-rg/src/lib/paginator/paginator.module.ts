@@ -19,10 +19,10 @@ import { PaginatorComponent } from './paginator.component';
 export class RgPaginatorModule {
 
   constructor(@Optional() @SkipSelf() parentModule?: RgPaginatorModule) {
-    if (parentModule) {
-      throw new Error(
-        'RgPaginatorModule is already loaded');
-    }
+    // if (parentModule) {
+    //   throw new Error(
+    //     'RgPaginatorModule is already loaded');
+    // }
   }
 
   static forRoot(paginatorConfig: IPaginatorOptions = {}): ModuleWithProviders<RgPaginatorModule> {

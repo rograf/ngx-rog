@@ -10,6 +10,8 @@ export interface ITableOptions {
   height?: string;
   title?: string;
   actionsCell?: string;
+  itemSizeVS? : number;
+  itemSize? : number;
   listBreakPoint?: number;
   virtualScroll?: boolean;
 }
@@ -21,9 +23,11 @@ export class TableOptions {
   delay = 0;
   title = null;
   height = null;
-  search = true;
+  search = false;
+  itemSize = null;
+  itemSizeVS = null;
   searchText = null;
-  listBreakPoint = 800;
+  listBreakPoint = 0;
   virtualScroll = false;
 }
 
