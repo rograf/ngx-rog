@@ -89,6 +89,7 @@ export class TableComponent implements OnInit {
   customTemplate: any = {};
   componentRef;
   isTable = true;
+  lastParams;
 
   @ContentChildren(RgTemplateDirective)
   tableCellTemplate: QueryList<RgTemplateDirective>;
@@ -210,7 +211,11 @@ export class TableComponent implements OnInit {
   }
 
   emitPage(){
-    this.page.emit({pageSize: this.options.pageSize, page: 1, ...this.generateParams()})
+    const params = {pageSize: this.options.pageSize, page: 1, ...this.generateParams()};
+    if(JSON.stringify(params) !== JSON.stringify(this.lastParams)){
+      this.lastParams = params;
+      this.page.emit(params);
+    }
   }
 
   onChangeSearch(query) {

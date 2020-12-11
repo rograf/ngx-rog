@@ -30,15 +30,20 @@ export class TableVsComponent extends TablePagComponent implements OnInit {
   }
 
   set rows(value) {
-    if(value.length !== this._rows.length || value.length === this.length){
-      this.locked = false;
-    }
-    this._rows = value;
-    if(this.viewPort){
+    setTimeout(()=>{
+      if(value.length !== this._rows.length){
+        this.locked = false;
+      }
+      if(value.length === this.length){
+        this.locked = true;
+      }
+      this._rows = value;
       setTimeout(()=>{
-        this.headerTop = `-${this.viewPort.getOffsetToRenderedContentStart()}px`;
+        if(this.viewPort){
+          this.headerTop = `-${this.viewPort.getOffsetToRenderedContentStart()}px`;
+        }
       })
-    }
+    })
   }
 
   ngOnInit(): void {

@@ -39,11 +39,7 @@ export abstract class TableBase {
   }
 
   onChangeSorting(column){
-    let propagationAction = true;
     if(this.params.page){
-      if(this.params.page !== 1){
-        propagationAction = false;
-      }
       this.params.page = 1;
     }
     if(this.params.sort === column){
@@ -54,9 +50,7 @@ export abstract class TableBase {
     if(!this.length){
       this.rows = [...sortBy.transform(this.rows, this.params.sort)]
     }
-    if(propagationAction){
-      this.setQueryParams();
-    }
+    this.setQueryParams();
   }
 
 }
