@@ -212,7 +212,7 @@ export class TableComponent implements OnInit {
     const params = {pageSize: this.options.pageSize, page: 1, ...this.generateParams()};
     if(JSON.stringify(params) !== JSON.stringify(this.lastParams)){
       this.lastParams = params;
-      this.page.emit(params);
+      this.page.emit(this.service.options.emitPageOutput(params));
     }
   }
 

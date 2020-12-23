@@ -11,4 +11,5 @@ export interface RgTableOptions {
   itemSize? : number;
   listBreakpoint?: number;
   virtualScroll?: boolean;
+  emitPageOutput?: Function;
 }

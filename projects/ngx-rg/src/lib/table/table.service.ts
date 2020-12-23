@@ -15,6 +15,7 @@ const defaultOptions: RgTableOptions = {
   searchText: null,
   listBreakpoint: 0,
   virtualScroll: false,
+  emitPageOutput: event=>event,
 }
 
 @Injectable()
