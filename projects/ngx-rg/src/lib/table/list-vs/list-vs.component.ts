@@ -33,8 +33,8 @@ export class ListVsComponent extends ListPagComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(!this.options.itemSizeVS){
-      throw '[TABLE] Missed itemSizeVS in options'
+    if(!this.options.listItemSize){
+      throw '[TABLE] Missed listItemSize in options'
     }
     if(!this.options.height){
       throw '[TABLE] Missed height in options'

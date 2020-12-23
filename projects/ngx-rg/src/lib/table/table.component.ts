@@ -126,7 +126,7 @@ export class TableComponent implements OnInit {
 
   @HostListener('window:resize', [])
   createTable() {
-    this.isTable = this.el.nativeElement.offsetWidth > this._options.listBreakPoint;
+    this.isTable = this.el.nativeElement.offsetWidth > this._options.listBreakpoint;
     if(this.isTable && this.container.element?.nativeElement?.nextSibling?.tagName?.includes('TABLE')){
       return false;
     } else if(!this.isTable && this.container.element?.nativeElement?.nextSibling?.tagName?.includes('LIST')){

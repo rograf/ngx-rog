@@ -28,7 +28,7 @@ export class TableVsServerDataComponent implements OnInit {
     { key: 'age', displayName: 'age', type: 'number' },
   ];
 
-  options:any = {pageSize: 20, virtualScroll: true, itemSize: 25, itemSizeVS: '350', height: '400px'}
+  options:any = {pageSize: 20, virtualScroll: true, itemSize: 25, listItemSize: '350', height: '400px'}
 
   rows = [];
   length = 0;

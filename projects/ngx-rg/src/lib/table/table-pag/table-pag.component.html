@@ -15,7 +15,7 @@
             {{ header.displayName }}
           </ng-template>
         </th>
-        <th *ngIf="customTemplate[options.actionsCell]"></th>
+        <th *ngIf="customTemplate[options.actionCell]"></th>
       </tr>
     </thead>
     <tbody>
@@ -23,9 +23,9 @@
         <td *ngFor="let header of headers">
           <rg-cell [template]="customTemplate[header.key]" [header]="header" [row]="row"></rg-cell>
         </td>
-        <td *ngIf="customTemplate[options.actionsCell]" class="rg-table__actions">
+        <td *ngIf="customTemplate[options.actionCell]" class="rg-table__actions">
           <ng-container
-            *ngTemplateOutlet="customTemplate[options.actionsCell]; context: { row: row }"
+            *ngTemplateOutlet="customTemplate[options.actionCell]; context: { row: row }"
           ></ng-container>
         </td>
       </tr>

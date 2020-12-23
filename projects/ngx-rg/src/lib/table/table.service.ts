@@ -1,44 +1,30 @@
+import { RgTableOptions } from './_models/RgTableOptions.interface';
 
 import { Inject, Injectable, Optional } from '@angular/core';
 
-export interface ITableOptions {
-  paginator?: boolean;
-  pageSize?: number;
-  search?: boolean;
-  searchText?: string;
-  delay?: number;
-  height?: string;
-  title?: string;
-  actionsCell?: string;
-  itemSizeVS? : number;
-  itemSize? : number;
-  listBreakPoint?: number;
-  virtualScroll?: boolean;
-}
-
-export class TableOptions {
-  paginator = true;
-  pageSize = 10;
-  actionsCell = '_actions';
-  delay = 0;
-  title = null;
-  height = null;
-  search = false;
-  itemSize = null;
-  itemSizeVS = null;
-  searchText = null;
-  listBreakPoint = 0;
-  virtualScroll = false;
+const defaultOptions: RgTableOptions = {
+  paginator: true,
+  pageSize: 10,
+  actionCell: '_actions',
+  delay: 0,
+  title: null,
+  height: null,
+  search: false,
+  itemSize: null,
+  listItemSize: null,
+  searchText: null,
+  listBreakpoint: 0,
+  virtualScroll: false,
 }
 
 @Injectable()
 export class TableService {
 
-  options = new TableOptions();
+  options = defaultOptions;
 
-  constructor(@Optional() @Inject('tableConfig') tableConfig:ITableOptions) {
+  constructor(@Optional() @Inject('tableConfig') tableConfig:RgTableOptions) {
     if (tableConfig) {
-      this.options = {...this.options, ...tableConfig}
+      this.options = {...defaultOptions, ...tableConfig}
      }
   }
 

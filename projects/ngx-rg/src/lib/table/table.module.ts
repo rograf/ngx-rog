@@ -1,4 +1,5 @@
-import { TableService, ITableOptions } from './table.service';
+import { RgTableOptions } from './_models/RgTableOptions.interface';
+import { TableService } from './table.service';
 import { RgPaginatorModule } from './../paginator/paginator.module';
 import { RgModule } from './../_core/core.module';
 import { NgModule, ModuleWithProviders, Optional, SkipSelf } from '@angular/core';
@@ -36,7 +37,7 @@ export class RgTableModule {
     // }
   }
 
-  static forRoot(tableConfig: ITableOptions = {}): ModuleWithProviders<RgTableModule> {
+  static forRoot(tableConfig: RgTableOptions = {}): ModuleWithProviders<RgTableModule> {
     return {
       ngModule: RgTableModule,
       providers: [
