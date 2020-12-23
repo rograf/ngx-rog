@@ -10,6 +10,10 @@ const routes: Routes = [
     path: 'table',
     loadChildren: () => import('./table/table.module').then(m => m.TableModule)
   },
+  {
+    path: 'dialog',
+    loadChildren: () => import('./dialog/dialog.module').then(m => m.DialogModule)
+  },
 ];
 
 @NgModule({

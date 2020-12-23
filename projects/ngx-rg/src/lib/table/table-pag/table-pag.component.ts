@@ -1,7 +1,6 @@
-import { getDescendantProp } from './../../_core/utils';
-import { SYMBOL_TO_REVERSE } from './../../_core/variables';
 import { TableBase } from './../_helpers/table-base';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'rg-table-pag',
@@ -10,7 +9,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TablePagComponent extends TableBase implements OnInit {
 
-  constructor() {
+  constructor(
+  ) {
     super()
   }
 
@@ -21,7 +21,7 @@ export class TablePagComponent extends TableBase implements OnInit {
     let className = 'rg-table__header-btn--sorting';
     if(this.params.sort === columnName){
       className = className + '-asc';
-    } else if (this.params.sort ===  SYMBOL_TO_REVERSE + columnName){
+    } else if (this.params.sort ===  this.SYMBOL_TO_REVERSE + columnName){
       className = className + '-desc';
     }
     return className

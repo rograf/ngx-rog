@@ -33,7 +33,6 @@ export class TableService {
   }
 
   query(options:any = {}){
-    console.log('params', options)
     let rows = [...this.rows];
     if(options.pageSize){
       const page = (options.page || 1) - 1

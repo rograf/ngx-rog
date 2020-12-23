@@ -1,14 +1,12 @@
+import { RgConfigService } from './../_core/rg-config.service';
 import { TableService } from './table.service';
 import { TableVsComponent } from './table-vs/table-vs.component';
 import { ListVsComponent } from './list-vs/list-vs.component';
 import { ListPagComponent } from './list-pag/list-pag.component';
 import { TablePagComponent } from './table-pag/table-pag.component';
-import { PaginatorComponent } from './../paginator/paginator.component';
 import { SearchComponent } from './../search/search.component';
 import { RgSortByPipe } from '../_core/rg-sort-by.pipe';
 import { RgFilterPipe } from '../_core/rg-filter.pipe';
-import { getDescendantProp } from './../_core/utils';
-import { SYMBOL_TO_REVERSE } from './../_core/variables';
 import { RgTemplateDirective } from '../_core/rg-template.directive';
 import {
   Component,

@@ -21,7 +21,8 @@ export class TableVsComponent extends TablePagComponent implements OnInit {
   //   return '0'
   // }
 
-  constructor() {
+  constructor(
+  ) {
     super();
   }
 

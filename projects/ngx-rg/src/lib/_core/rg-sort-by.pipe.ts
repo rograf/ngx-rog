@@ -1,10 +1,21 @@
-import { SYMBOL_TO_REVERSE } from './variables';
+import { RgConfigService } from './rg-config.service';
 import { Pipe, PipeTransform } from '@angular/core';
 import { getDescendantProp, sortFn } from './utils';
 
+
 @Pipe({ name: 'rgSortBy' })
 export class RgSortByPipe implements PipeTransform {
+
+  SYMBOL_TO_REVERSE;
+
+  constructor(
+    configService:RgConfigService = RgConfigService.instance
+  ){
+    this.SYMBOL_TO_REVERSE = configService?.config?.symbolToReverse
+  }
+  
   transform(value: any[], column: string = ''): any[] {
+    
     if (!value || !column || !value.length) {
       return value;
     }
@@ -12,8 +23,8 @@ export class RgSortByPipe implements PipeTransform {
     let reverse = false;
     let sortedValue = []
 
-    if(column.startsWith(SYMBOL_TO_REVERSE)){
-      column = column.substring(SYMBOL_TO_REVERSE.length);
+    if(column.startsWith(this.SYMBOL_TO_REVERSE)){
+      column = column.substring(this.SYMBOL_TO_REVERSE.length);
       reverse = true;
     }
 

@@ -1,8 +1,8 @@
 import { RgTableOptions } from './_models/RgTableOptions.interface';
 import { TableService } from './table.service';
 import { RgPaginatorModule } from './../paginator/paginator.module';
-import { RgModule } from './../_core/core.module';
-import { NgModule, ModuleWithProviders, Optional, SkipSelf } from '@angular/core';
+import { RgModule } from '../_core/rg-core.module';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TableComponent } from './table.component';
 import { RgSearchModule } from '../search/search.module';
@@ -30,13 +30,6 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 
 export class RgTableModule {
 
-  constructor(@Optional() @SkipSelf() parentModule?: RgTableModule) {
-    // if (parentModule) {
-    //   throw new Error(
-    //     'RgTableModule is already loaded');
-    // }
-  }
-
   static forRoot(tableConfig: RgTableOptions = {}): ModuleWithProviders<RgTableModule> {
     return {
       ngModule: RgTableModule,
@@ -47,9 +40,9 @@ export class RgTableModule {
     };
   }
 
-  static forChild(): ModuleWithProviders<RgPaginatorModule> {
+  static forChild(): ModuleWithProviders<RgTableModule> {
     return {
-      ngModule: RgPaginatorModule,
+      ngModule: RgTableModule,
       providers: [
         TableService,
       ]
