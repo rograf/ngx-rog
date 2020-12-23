@@ -10,7 +10,7 @@ const defaultOptions: RgConfig = {
 export class RgConfigService {
 
   config = defaultOptions;
-  static instance: RgConfigService;
+  static instance: RgConfigService = null;
 
   constructor(@Optional() @Inject('config') config:RgConfig) {
     RgConfigService.instance = this;

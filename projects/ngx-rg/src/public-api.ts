@@ -3,7 +3,14 @@
  */
 
 export * from './lib/search/search.module';
+export * from './lib/search/search.component';
 export * from './lib/paginator/paginator.module';
+export * from './lib/paginator/paginator.component';
 export * from './lib/table/table.module';
+export * from './lib/table/table.component';
 
-export * from './lib/_core/core.module';
+export * from './lib/_core/rg-core.module';
+export * from './lib/_core/rg-sort-by.pipe';
+export * from './lib/_core/rg-template.directive';
+export * from './lib/_core/rg-filter.pipe';
+export * from './lib/_core/rg-ng-model-change.directive';
