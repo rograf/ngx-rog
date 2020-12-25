@@ -19,6 +19,9 @@ export class ListVsComponent extends ListPagComponent implements OnInit {
   }
 
   set rows(value) {
+    if(this.params.sort && !this.length){
+      value = [...this.sortBy.transform(value, this.params.sort)]
+    }
     if(value.length !== this._rows.length){
       this.locked = false;
     }

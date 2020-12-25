@@ -70,6 +70,9 @@ export class TableComponent implements OnInit {
 
   @Input() set options(value) {
     this._options = { ...this.options, ...value };
+    if(!this.params.sort && this.options.defaultSorting){
+      this.params.sort = this.options.defaultSorting;
+    }
     if(this.componentRef?.instance){
       this.componentRef.instance.options = this._options;
     }

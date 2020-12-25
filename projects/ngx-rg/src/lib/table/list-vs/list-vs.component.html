@@ -1,6 +1,6 @@
 <cdk-virtual-scroll-viewport [itemSize]="options.listItemSize" [style.height]="options.height" (scrolledIndexChange)="scroll($event)">
   <div *cdkVirtualFor="let row of rows" class="rg-list">
-    <div *ngFor="let header of headers" [style.width]="header.widthList || '100%'" class="rg-list__item">
+    <div *ngFor="let header of headers" [style.width]="header.listWidth || '100%'" class="rg-list__item">
       <label class="rg-label">{{header.displayName}}</label>
       <rg-cell [template]="customTemplate[header.key]" [header]="header" [row]="row"></rg-cell>
     </div>

@@ -31,6 +31,9 @@ export class TableVsComponent extends TablePagComponent implements OnInit {
   }
 
   set rows(value) {
+    if(this.params.sort && !this.length){
+      value = [...this.sortBy.transform(value, this.params.sort)]
+    }
     setTimeout(()=>{
       if(value.length !== this._rows.length){
         this.locked = false;

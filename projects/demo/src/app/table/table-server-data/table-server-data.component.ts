@@ -14,15 +14,15 @@ export class TableServerDataComponent implements OnInit {
   }
 
   headers = [
-    { key: 'name', displayName: 'name', sorting: true },
-    { key: 'address.city', displayName: 'city', sorting: true, widthList: 'calc(100% - 100px)' },
-    { key: 'address.country', displayName: 'country', sorting: true, widthList: '100px' },
+    { key: 'name', displayName: 'name', sortable: true },
+    { key: 'address.city', displayName: 'city', sortable: true, listWidth: 'calc(100% - 100px)' },
+    { key: 'address.country', displayName: 'country', sortable: true, listWidth: '100px' },
     { key: 'roles', displayName: 'roles', type: 'array' },
-    { key: 'lastLogin', displayName: 'birthday', sorting: true, type: 'date' },
+    { key: 'lastLogin', displayName: 'birthday', sortable: true, type: 'date' },
     {
       key: 'verified',
       displayName: 'verified',
-      sorting: true,
+      sortable: true,
       type: 'boolean',
     },
     { key: 'age', displayName: 'age', type: 'number' },

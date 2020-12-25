@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './table-pag.component.html',
   styleUrls: ['./table-pag.component.scss']
 })
-export class TablePagComponent extends TableBase implements OnInit {
+export class TablePagComponent extends TableBase {
 
   constructor(
   ) {

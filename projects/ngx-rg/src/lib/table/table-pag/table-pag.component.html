@@ -4,7 +4,7 @@
       <tr>
         <th scope="col" *ngFor="let header of headers" class="rg-table__header">
           <button
-            *ngIf="header.sorting; else noSortingHeader"
+            *ngIf="header.sortable; else noSortingHeader"
             class="rg-table__header-btn"
             [ngClass]="getColumnClass(header.key)"
             (click)="onChangeSorting(header.key)"

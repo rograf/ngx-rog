@@ -1,3 +1,4 @@
+import { RgTableOptions } from './../_models/RgTableOptions.interface';
 import { RgConfigService } from './../../_core/rg-config.service';
 import { RgSortByPipe } from '../../_core/rg-sort-by.pipe';
 import { getDescendantProp } from './../../_core/utils';
@@ -12,13 +13,14 @@ export abstract class TableBase {
   constructor(){
 
   }
+  
 
   getDescendantProp = getDescendantProp;
 
   setQueryParams
 
   params;
-  options;
+  options: RgTableOptions;
   headers;
   length;
   _rows = []
