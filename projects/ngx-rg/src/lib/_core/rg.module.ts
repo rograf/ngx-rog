@@ -5,17 +5,17 @@ import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { RgTemplateDirective } from './rg-template.directive';
 import { RgSortByPipe } from './rg-sort-by.pipe';
-import { RgNgModelChangeDirective } from './rg-ng-model-change.directive';
+import { RgModelChangeDirective } from './rg-model-change.directive';
 
 const PIPES = [
   RgSortByPipe,
   RgTemplateDirective,
   RgFilterPipe,
-  RgNgModelChangeDirective
+  RgModelChangeDirective
 ]
 
 const DIRECTIVES = [
-  RgNgModelChangeDirective
+  RgModelChangeDirective
 ]
 
 @NgModule({

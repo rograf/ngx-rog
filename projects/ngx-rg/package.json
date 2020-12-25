@@ -1,8 +1,9 @@
 {
   "name": "ngx-rg",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "peerDependencies": {
     "@angular/common": "^10.1.4",
+    "@angular/cdk": "^11.0.1",
     "@angular/core": "^10.1.4"
   },
   "dependencies": {

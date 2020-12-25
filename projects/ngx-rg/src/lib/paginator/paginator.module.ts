@@ -1,6 +1,6 @@
 import { PaginatorService, IPaginatorOptions } from './paginator.service';
 import { FormsModule } from '@angular/forms';
-import { RgModule } from '../_core/rg-core.module';
+import { RgModule } from '../_core/rg.module';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PaginatorComponent } from './paginator.component';

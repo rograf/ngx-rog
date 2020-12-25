@@ -2,12 +2,12 @@
 
 <div [ngStyle]="options.height?{'height': options.height, 'overflow': 'auto'} : ''">
   
-  <div *ngFor="let row of length?rows : rows | slice: paginator.startIndex:paginator.endIndex" class="r-list">
-    <div *ngFor="let header of headers" [style.width]="header.widthList || '100%'" class="r-list__item">
-      <label class="r-label">{{header.displayName}}</label>
+  <div *ngFor="let row of length?rows : rows | slice: paginator.startIndex:paginator.endIndex" class="rg-list">
+    <div *ngFor="let header of headers" [style.width]="header.widthList || '100%'" class="rg-list__item">
+      <label class="rg-label">{{header.displayName}}</label>
       <rg-cell [template]="customTemplate[header.key]" [header]="header" [row]="row"></rg-cell>
     </div>
-    <div *ngIf="customTemplate[options.actionCell]" class="r-list__actions">
+    <div *ngIf="customTemplate[options.actionCell]" class="rg-list__actions">
       <ng-container
       *ngTemplateOutlet="customTemplate[options.actionCell]; context: { row: row }"
       ></ng-container>

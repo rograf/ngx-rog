@@ -3,17 +3,17 @@ import { NgModel } from '@angular/forms';
 import { debounceTime, skip, distinctUntilChanged, tap } from 'rxjs/operators';
 
 @Directive({
-  selector: '[rgNgModelChange]'
+  selector: '[rgModelChange]'
 })
-export class RgNgModelChangeDirective {
+export class RgModelChangeDirective {
 
   @Output()
-  rgNgModelChange = new EventEmitter<any>();
+  rgModelChange = new EventEmitter<any>();
 
   _delay = 500;
   subscription;
 
-  @Input('rgNgModelChangeDelay') set delay (value){
+  @Input('rgModelChangeDelay') set delay (value){
     // if(!value && value !== 0){
     //   value = 500
     // }
@@ -33,7 +33,7 @@ export class RgNgModelChangeDirective {
       distinctUntilChanged(),
       debounceTime(this.delay)
     ).subscribe((value) => {
-      this.rgNgModelChange.emit(value)
+      this.rgModelChange.emit(value)
     });
   }
 

@@ -1,5 +1,5 @@
 import { FormsModule } from '@angular/forms';
-import { RgModule } from '../_core/rg-core.module';
+import { RgModule } from '../_core/rg.module';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchComponent } from './search.component';

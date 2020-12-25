@@ -1,5 +1,5 @@
   <div class="rg-search">
-    <input class="rg-search__input" type="text" name="query" [(ngModel)]="query" [value]="queryDebounce" (rgNgModelChange)="onQueryChange($event)" autocomplete="off" [placeholder]="placeholder || options.placeholder">
+    <input class="rg-search__input" type="text" name="query" [(ngModel)]="query" [value]="queryDebounce" (rgModelChange)="onQueryChange($event)" autocomplete="off" [placeholder]="placeholder || options.placeholder">
     <span class="rg-search__icon"></span>
   </div>
 

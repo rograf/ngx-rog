@@ -1,7 +1,7 @@
 import { RgTableOptions } from './_models/RgTableOptions.interface';
 import { TableService } from './table.service';
 import { RgPaginatorModule } from './../paginator/paginator.module';
-import { RgModule } from '../_core/rg-core.module';
+import { RgModule } from '../_core/rg.module';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TableComponent } from './table.component';

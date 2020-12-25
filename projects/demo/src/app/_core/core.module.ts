@@ -2,7 +2,7 @@ import { RgSearchModule } from './../../../../ngx-rg/src/lib/search/search.modul
 import { RgTableModule } from './../../../../ngx-rg/src/lib/table/table.module';
 import { NgModule, ModuleWithProviders, Optional } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RgModule } from '../../../../ngx-rg/src/lib/_core/rg-core.module';
+import { RgModule } from '../../../../ngx-rg/src/lib/_core/rg.module';
 import { SkipSelf } from '@angular/core';
 
 
@@ -12,7 +12,6 @@ import { SkipSelf } from '@angular/core';
   imports: [
     CommonModule,
     RgModule.forRoot({symbolToReverse: '-'}),
-    RgTableModule.forRoot(),
     RgSearchModule,
   ],
   exports: [RgSearchModule]
