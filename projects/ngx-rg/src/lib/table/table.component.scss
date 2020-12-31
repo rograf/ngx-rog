@@ -15,6 +15,7 @@
   }
   &__nav-actions {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
   }
   &__title {
@@ -73,6 +74,14 @@
       }
     }
   }
+  &__no-data {
+    text-align: center;
+    margin: 1rem;
+  }
+}
+
+::ng-deep .rg-loading .rg-table__no-data{
+  opacity: 0;
 }
 
 ::ng-deep .rg-label {

@@ -10,4 +10,7 @@
       ></ng-container>
     </div>
   </div>
+  <div class="rg-table__no-data" *ngIf="rows.length === 0 && options.noDataText">
+    {{options.noDataText}}
+  </div>
 </cdk-virtual-scroll-viewport>

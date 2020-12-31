@@ -13,6 +13,11 @@
       ></ng-container>
     </div>
   </div>
+
+  <div class="rg-table__no-data" *ngIf="rows.length === 0 && options.noDataText">
+    {{options.noDataText}}
+  </div>
+
 </div>
 
 <rg-paginator class="rg-paginator-bottom" #paginator [length]="length || rows.length" [pageSize]="options.pageSize" [currentPage]="params.page || 1" (page)="onChangePage($event); paginator2.currentPage = $event.currentPage + 1"></rg-paginator>

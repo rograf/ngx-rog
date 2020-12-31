@@ -16,6 +16,7 @@ const defaultOptions: RgTableOptions = {
   listBreakpoint: 0,
   virtualScroll: false,
   defaultSorting: null,
+  noDataText: '-',
   emitPageOutput: event=>event,
 }
 

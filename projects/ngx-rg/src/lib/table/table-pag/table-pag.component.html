@@ -31,6 +31,9 @@
       </tr>
     </tbody>
   </table>
+  <div class="rg-table__no-data" *ngIf="rows.length === 0 && options.noDataText">
+    {{options.noDataText}}
+  </div>
 </div>
 
 <rg-paginator #paginator [length]="length || rows.length" [pageSize]="options.pageSize" [currentPage]="params.page || 1" (page)="onChangePage($event)" [delay]="options.delay"></rg-paginator>

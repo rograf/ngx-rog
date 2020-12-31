@@ -20,7 +20,7 @@ import { TableVsServerDataComponent } from './table-vs-server-data/table-vs-serv
     TableRoutingModule,
     // RgSearchModule.forRoot({icon:'<i class="fas fa-search"></i>'}),
     // RgPaginatorModule.forRoot({labelLeft: 'Prev'}),
-    RgTableModule.forRoot({pageSize:20, listBreakpoint: 800, search: true})
+    RgTableModule.forRoot({pageSize:20, listBreakpoint: 800, search: true, noDataText: 'No data to display'})
   ]
 })
 export class TableModule { }
