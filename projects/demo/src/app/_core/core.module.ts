@@ -14,7 +14,7 @@ import { SkipSelf } from '@angular/core';
     RgModule.forRoot({symbolToReverse: '-'}),
     RgSearchModule,
   ],
-  exports: [RgSearchModule]
+  exports: [RgSearchModule, RgModule]
 })
 export class CoreModule {
 

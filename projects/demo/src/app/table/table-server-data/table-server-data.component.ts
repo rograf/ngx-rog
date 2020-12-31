@@ -34,6 +34,8 @@ export class TableServerDataComponent implements OnInit {
     searchText: 'Start typing...'
   }
 
+  loading = false;
+
   rows = [];
   length = 0;
 
@@ -41,9 +43,11 @@ export class TableServerDataComponent implements OnInit {
   }
 
   onChangePage(event) {
+    this.loading = true;
     this.service.query({...event}).subscribe((res)=>{
       this.length = res.total;
       this.rows = res.list;
+      this.loading = false;
     })
   }
 

@@ -1,3 +1,4 @@
+import { RgLoaderDirective } from './rg-loader.directive';
 import { RgConfigService } from './rg-config.service';
 import { RgConfig } from './rg-config.interface';
 import { RgFilterPipe } from './rg-filter.pipe';
@@ -15,7 +16,8 @@ const PIPES = [
 ]
 
 const DIRECTIVES = [
-  RgModelChangeDirective
+  RgModelChangeDirective,
+  RgLoaderDirective,
 ]
 
 @NgModule({

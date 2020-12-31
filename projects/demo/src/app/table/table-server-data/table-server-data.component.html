@@ -1,5 +1,5 @@
 <h1>Pagination on server side</h1>
-<rg-table [headers]="headers" [rows]="rows" [options]="options" [length]="length" (page)="onChangePage($event)">
+<rg-table [headers]="headers" [rows]="rows" [options]="options" [length]="length" (page)="onChangePage($event)" [rgLoader]="loading">
 
   <div>
     <button>Add User</button>
