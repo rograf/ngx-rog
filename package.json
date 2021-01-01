@@ -4,7 +4,8 @@
   "scripts": {
     "rg": "rg",
     "start": "ng serve demo",
-    "build": "ng build",
+    "build": "ng build ngx-rg --prod && npm run copy",
+    "copy": "cpx \"./projects/ngx-rg/src/lib/_theme/styles.scss\" \"./dist/ngx-rg/assets\"",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -43,6 +44,7 @@
     "ng-packagr": "^10.1.0",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
+    "cpx": "^1.5.0",
     "tslint": "~6.1.0",
     "typescript": "~4.0.2"
   }
