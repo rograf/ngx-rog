@@ -16,9 +16,9 @@
       "dom"
     ],
     "paths": {
-      "rog-lib": [
-        "dist/rog-lib/rog-lib",
-        "dist/rog-lib"
+      "ngx-rg": [
+        "dist/ngx-rg/ngx-rg",
+        "dist/ngx-rg"
       ]
     }
   }

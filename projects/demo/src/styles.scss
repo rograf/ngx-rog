@@ -1,1 +1,5 @@
-@import './projects/rog-lib/src/lib/_theme/styles.scss'
+@import './projects/ngx-rg/src/lib/_theme/styles.scss';
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

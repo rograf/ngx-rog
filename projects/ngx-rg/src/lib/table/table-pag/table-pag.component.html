@@ -1,0 +1,39 @@
+<div [ngStyle]="options.height?{'height': options.height, 'overflow': 'auto'} : ''">
+  <table class="rg-table">
+    <thead>
+      <tr>
+        <th scope="col" *ngFor="let header of headers" class="rg-table__header">
+          <button
+            *ngIf="header.sortable; else noSortingHeader"
+            class="rg-table__header-btn"
+            [ngClass]="getColumnClass(header.key)"
+            (click)="onChangeSorting(header.key)"
+          >
+            {{ header.displayName }}
+          </button>
+          <ng-template #noSortingHeader>
+            {{ header.displayName }}
+          </ng-template>
+        </th>
+        <th *ngIf="customTemplate[options.actionCell]"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of length?rows : rows | slice: paginator.startIndex:paginator.endIndex">
+        <td *ngFor="let header of headers">
+          <rg-cell [template]="customTemplate[header.key]" [header]="header" [row]="row"></rg-cell>
+        </td>
+        <td *ngIf="customTemplate[options.actionCell]" class="rg-table__actions">
+          <ng-container
+            *ngTemplateOutlet="customTemplate[options.actionCell]; context: { row: row }"
+          ></ng-container>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="rg-table__no-data" *ngIf="rows.length === 0 && options.noDataText">
+    {{options.noDataText}}
+  </div>
+</div>
+
+<rg-paginator #paginator [length]="length || rows.length" [pageSize]="options.pageSize" [currentPage]="params.page || 1" (page)="onChangePage($event)" [delay]="options.delay"></rg-paginator>

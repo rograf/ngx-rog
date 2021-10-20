@@ -1,18 +1,19 @@
-import { RogModule } from './../../../rog-lib/src/lib/_core/core.module';
-import { RogTableModule } from './../../../rog-lib/src/lib/table/table.module';
+import { CoreModule } from './_core/core.module';
+import { AppRoutingModule } from './app.routing.';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
-    RogModule,
-    RogTableModule
+    CoreModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

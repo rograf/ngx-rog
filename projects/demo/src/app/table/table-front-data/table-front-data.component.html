@@ -1,0 +1,12 @@
+<h1>Pagination on frontend side</h1>
+<rg-table [headers]="headers" [rows]="rows">
+
+  <ng-template rgTemplate="age" let-value="value" let-row="row">
+    -
+  </ng-template>
+
+  <ng-template rgTemplate="_actions" let-row="row">
+    <button (click)="row.verified = !row.verified">Verify</button>
+  </ng-template>
+
+</rg-table>

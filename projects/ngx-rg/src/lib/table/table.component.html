@@ -1,0 +1,11 @@
+<div class="rg-table__nav{{isTable?'':'--list'}}">
+  <div>
+    <h4 *ngIf="options.title" class="rg-table__title">{{options.title}}</h4>
+  </div>
+  <div class="rg-table__nav-actions">
+    <rg-search *ngIf="options.search" (search)="onChangeSearch($event)" [query]="params.query" [placeholder]="options.searchText"></rg-search>
+    <ng-content></ng-content>
+  </div>
+</div>
+
+<template #container></template>

@@ -1,3 +1,0 @@
-<button [disabled]="currentPage <= 1" (click)="prevPage()">←</button>
-<input type="number" name="paginator" [(ngModel)]="currentPage" (rogNgModelChange)="setPage()"> / {{totalPages}}
-<button [disabled]="currentPage >= totalPages" (click)="nexPage()">→</button>
