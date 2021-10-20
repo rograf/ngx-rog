@@ -1,83 +1,45 @@
-// Variables
-//
-// Variables should follow the `$component-state-property-size` formula for
-// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+:root {
+  --rg-body: 250, 250, 250;
+  --rg-primary: 69, 71, 164;
+  --rg-secondary: 65, 178, 169;
+  --rg-base: 255, 255, 255;
+  --rg-contrast: 22, 23, 59;
+  --rg-success: 0, 168, 157;
+  --rg-warning: 239, 180, 20;
+  --rg-danger: 230, 57, 87;
+  --rg-info: 42, 126, 207;
+  --rg-muted: 196, 196, 196;
+  --rg-font-size: 16px;
+  --rg-font-family: Arial;
+}
 
-// Color system
+$colors: 'primary', 'secondary', 'base', 'contrast', 'body', 'success', 'warning', 'danger', 'info', 'muted';
 
-$white:    #fff !default;
-$gray-100: #f8f9fa !default;
-$gray-200: #e9ecef !default;
-$gray-300: #dee2e6 !default;
-$gray-400: #ced4da !default;
-$gray-500: #adb5bd !default;
-$gray-600: #6c757d !default;
-$gray-700: #495057 !default;
-$gray-800: #343a40 !default;
-$gray-900: #212529 !default;
-$black:    #000 !default;
-
-// fusv-disable
-$grays: (
-  "100": $gray-100,
-  "200": $gray-200,
-  "300": $gray-300,
-  "400": $gray-400,
-  "500": $gray-500,
-  "600": $gray-600,
-  "700": $gray-700,
-  "800": $gray-800,
-  "900": $gray-900
+$spacer: 1rem !default;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
 ) !default;
-// fusv-enable
 
-$blue:    #0d6efd !default;
-$indigo:  #6610f2 !default;
-$purple:  #6f42c1 !default;
-$pink:    #d63384 !default;
-$red:     #dc3545 !default;
-$orange:  #fd7e14 !default;
-$yellow:  #ffc107 !default;
-$green:   #198754 !default;
-$teal:    #20c997 !default;
-$cyan:    #0dcaf0 !default;
+$grid-columns: 12 !default;
 
-// scss-docs-start colors-map
-$colors: (
-  "blue":       $blue,
-  "indigo":     $indigo,
-  "purple":     $purple,
-  "pink":       $pink,
-  "red":        $red,
-  "orange":     $orange,
-  "yellow":     $yellow,
-  "green":      $green,
-  "teal":       $teal,
-  "cyan":       $cyan,
-  "white":      $white,
-  "gray":       $gray-600,
-  "gray-dark":  $gray-800
+$grid-breakpoints: (
+  xs: 0,
+  sm: 600px,
+  md: 1024px,
+  lg: 1366px,
+  xl: 1600px,
+  xxl: 1920px
 ) !default;
-// scss-docs-end colors-map
 
-$primary:       $blue !default;
-$secondary:     $gray-600 !default;
-$success:       $green !default;
-$info:          $cyan !default;
-$warning:       $yellow !default;
-$danger:        $red !default;
-$light:         $gray-100 !default;
-$dark:          $gray-600 !default;
-$black:         $gray-900 !default;
-
-// scss-docs-start theme-colors-map
-$theme-colors: (
-  "primary":    $primary,
-  "secondary":  $secondary,
-  "success":    $success,
-  "info":       $info,
-  "warning":    $warning,
-  "danger":     $danger,
-  "light":      $light,
-  "dark":       $dark
+$container-max-widths: (
+  sm: 580px,
+  md: 580px,
+  lg: 1300px,
+  xl: 1580px,
+  xxl: 1580px
 ) !default;

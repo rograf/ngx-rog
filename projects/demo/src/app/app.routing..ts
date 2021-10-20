@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'dialog',
     loadChildren: () => import('./dialog/dialog.module').then(m => m.DialogModule)
   },
+  {
+    path: 'grid',
+    loadChildren: () => import('./grid/grid.module').then(m => m.GridModule)
+  },
 ];
 
 @NgModule({

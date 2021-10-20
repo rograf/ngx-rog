@@ -1,0 +1,57 @@
+.row {
+  display: flex;
+  gap: $spacer;
+  flex-wrap: wrap;
+  width: 100%;
+  &.no-gutters {
+    gap: 0;
+  }
+}
+
+[class^="col"] {
+  flex-grow: 1;
+  padding: $spacer;
+}
+
+@function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
+  @return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
+}
+
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@each $breakpoint in map-keys($grid-breakpoints){
+  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+  @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+    @for $i from 1 through $grid-columns {
+      .row > .col#{$infix}-#{$i} {
+        width: calc(#{percentage($i / $grid-columns)} - #{$spacer - ($i / $grid-columns)});
+      }
+      .row.no-gutters > .col#{$infix}-#{$i} {
+        width: percentage($i / $grid-columns);
+      }
+      .offset#{$infix}-#{$i} {
+        margin-left: calc(#{percentage($i / $grid-columns)} + #{$i / $grid-columns * $spacer});
+      }
+      .row.no-gutters > .offset#{$infix}-#{$i} {
+        margin-left: percentage($i / $grid-columns);
+      }
+    }
+  }
+
+}
+
